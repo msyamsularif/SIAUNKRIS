@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php require "../koneksi.php"; ?>
 <head>
   <!-- Required meta tags -->
     <?php require "../partials/_head.php"; ?>
@@ -37,7 +37,7 @@ label {
   $(document).ready(function() {
     $('#example').DataTable(
         
-         {     
+         { 
 
       "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
         "iDisplayLength": 5
@@ -79,80 +79,65 @@ label {
                     <code>.table-striped</code>
 				  </p>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-          <div class="row table-responsive">
-          <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td>$86,000</td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2012/03/29</td>
-                <td>$433,060</td>
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
-</div>
+          <div class="row">
+
+          <?php
+          $sql = 'SELECT kode, no_ijin, nama_prodi, ketua_prodi, email, status
+		FROM data_prodi';
+
+          $query = mysqli_query($conn, $sql);
+
+          if (!$query) {
+            die('SQL Error: ' . mysqli_error($conn));
+          }
+
+          echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
+<thead>
+<tr>
+    <th>Kode</th>
+    <th>Nomor Ijin</th>
+    <th>Nama Program Studi</th>
+    <th>Ketua</th>
+    <th>E-Mail</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+</thead>
+		<tbody>';
+
+          while ($row = mysqli_fetch_array($query)) {
+            echo '<tr>
+      <td>' . $row['kode'] . '</td>
+      <td>' . $row['no_ijin'] . '</td>
+      <td>' . $row['nama_prodi'] . '</td>
+      <td>' . $row['ketua_prodi'] . '</td>
+      <td>' . $row['email'] . '</td>
+      <td>' . $row['status'] . '</td>
+      <td>EDIT | DELETE</td>
+		</tr>';
+          }
+          echo '
+  </tbody>
+  <tfoot>
+    <tr>
+    <th>Kode</th>
+    <th>Nomor Ijin</th>
+    <th>Nama Program Studi</th>
+    <th>Ketua</th>
+    <th>E-Mail</th>
+    <th>Status</th>
+    <th>Action</th>
+    </tr>
+</tfoot>
+</table>';
+
+// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
+          mysqli_free_result($query);
+
+// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
+          mysqli_close($conn);
+          ?>
+                  </div>
                   </div>
                 </div>
               </div>
