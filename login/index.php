@@ -25,13 +25,7 @@
             <div class="auto-form-wrapper">
 			<div>
 		<!-- BEGIN::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
-			<?php 
-		if (isset($_GET['pesan'])) {
-			if ($_GET['pesan'] == "gagal") {
-				echo "<div class='alert alert-danger'>Username dan Password tidak sesuai !</div>";
-			}
-		}
-		?>
+
 		<!-- END::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
 			</div>
               <form action="cek_login.php" method="post">
