@@ -1,12 +1,3 @@
-<?php 
-session_start();
- 
-	// cek apakah yang mengakses halaman ini sudah login
-if ($_SESSION['level'] == "") {
-	header("location:../login/index.php?pesan=gagal");
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +10,41 @@ if ($_SESSION['level'] == "") {
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
   <!-- inject:css -->
   <link rel="stylesheet" href="../public/css/style.css">
+
+<!-- Plugin Data Tables -->
+<script src="../public/datatables/jquery.min.js"></script>
+<script src="../public/datatables/jquery.dataTables.min.js"></script>
+<script src="../public/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Plugin Data Tables -->
+<style>
+  table{
+    width:100%;
+}
+#example_filter{
+    float:right;
+}
+#example_paginate{
+    float:right;
+}
+label {
+    display: inline-flex;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+   
+}
+</style>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable(
+        
+         {     
+
+      "aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        "iDisplayLength": 5
+       } 
+        );
+} );
+</script>
   <!-- endinject -->
 </head>
 
@@ -53,243 +79,80 @@ if ($_SESSION['level'] == "") {
                     <code>.table-striped</code>
 				  </p>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-								<div class="row align-items-center">
-									<div class="col-xl-8 order-2 order-xl-1">
-										<div class="form-group m-form__group row align-items-center">
-											<div class="col-md-4">
-												<div class="m-form__group m-form__group--inline">
-													<div class="m-form__label">
-														<label>
-															Status:
-														</label>
-													</div>
-													<div class="m-form__control">
-														<select class="form-control m-bootstrap-select" id="m_form_status">
-															<option value="">
-																All
-															</option>
-															<option value="1">
-																Pending
-															</option>
-															<option value="2">
-																Delivered
-															</option>
-															<option value="3">
-																Canceled
-															</option>
-														</select>
-													</div>
-												</div>
-												<div class="d-md-none m--margin-bottom-10"></div>
-											</div>
-											<div class="col-md-4">
-												<div class="m-form__group m-form__group--inline">
-													<div class="m-form__label">
-														<label class="m-label m-label--single">
-															Type:
-														</label>
-													</div>
-													<div class="m-form__control">
-														<select class="form-control m-bootstrap-select" id="m_form_type">
-															<option value="">
-																All
-															</option>
-															<option value="1">
-																Online
-															</option>
-															<option value="2">
-																Retail
-															</option>
-															<option value="3">
-																Direct
-															</option>
-														</select>
-													</div>
-												</div>
-												<div class="d-md-none m--margin-bottom-10"></div>
-											</div>
-											<div class="col-md-4">
-												<div class="m-input-icon m-input-icon--left">
-													<input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
-													<span class="m-input-icon__icon m-input-icon__icon--left">
-														<span>
-															<i class="la la-search"></i>
-														</span>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-4 order-1 order-xl-2 m--align-right">
-										<a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
-											<span>
-												<i class="la la-cart-plus"></i>
-												<span>
-													New Order
-												</span>
-											</span>
-										</a>
-										<div class="m-separator m-separator--dashed d-xl-none"></div>
-									</div>
-								</div>
-							</div>
-                  <div class="table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>
-                            User
-                          </th>
-                          <th>
-                            First name
-                          </th>
-                          <th>
-                            Progress
-                          </th>
-                          <th>
-                            Amount
-                          </th>
-                          <th>
-                            Deadline
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-2.png" alt="image" />
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $245.30
-                          </td>
-                          <td>
-                            July 1, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-3.png" alt="image" />
-                          </td>
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $138.00
-                          </td>
-                          <td>
-                            Apr 12, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-4.png" alt="image" />
-                          </td>
-                          <td>
-                            Peter Meggik
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>
-                            Edward
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 160.25
-                          </td>
-                          <td>
-                            May 03, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-2.png" alt="image" />
-                          </td>
-                          <td>
-                            John Doe
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 123.21
-                          </td>
-                          <td>
-                            April 05, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces-clipart/pic-3.png" alt="image" />
-                          </td>
-                          <td>
-                            Henry Tom
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 150.00
-                          </td>
-                          <td>
-                            June 16, 2015
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+          <div class="row table-responsive">
+          <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>2009/01/12</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>2012/03/29</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>33</td>
+                <td>2008/11/28</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td>Brielle Williamson</td>
+                <td>Integration Specialist</td>
+                <td>New York</td>
+                <td>61</td>
+                <td>2012/12/02</td>
+                <td>$372,000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
                   </div>
                 </div>
               </div>
