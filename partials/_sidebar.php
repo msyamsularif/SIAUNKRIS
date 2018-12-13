@@ -38,7 +38,7 @@
                   <a class="nav-link" href="../prodi">Program Studi</a>
                 </li>
                 <li class="nav-item <?php if ($page == "dosen") echo "active"; ?>">
-                  <a class="nav-link" href="#">Data Dosen</a>
+                  <a class="nav-link" href="../dosen">Data Dosen</a>
                 </li>
                 <li class="nav-item <?php if ($page == "gradenilai") echo "active"; ?>">
                   <a class="nav-link" href="#">Grade Nilai</a>
@@ -50,7 +50,7 @@
             </div>
           </li>
           <li class="nav-item <?php if ($page == "mahasiswa") echo "active"; ?>">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../mahasiswa">
               <i class="menu-icon mdi mdi-account-card-details"></i>
               <span class="menu-title">Mahasiswa</span>
             </a>
