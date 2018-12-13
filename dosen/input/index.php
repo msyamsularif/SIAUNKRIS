@@ -171,11 +171,21 @@ label {
                         </div>
                         <br>
                       </div>
-                      <div class="col-sm-4">
-                      <button type="button" class="btn btn-success btn-rounded btn-fw">Input</button>
+                      <div class="row">
+                      <div class="col-sm-6">
+                      <a href="#" class="btn btn-success btn-rounded btn-fw">
+													<span>
+														Input
+													</span>
+                      </a>
                       </div>
-                      <div class="col-sm-5">
-                      <button type="button" class="btn btn-danger btn-rounded btn-fw">Batal</button>
+                      <div class="col-sm-6">
+                      <a href="../" class="btn btn-danger btn-rounded btn-fw">
+													<span>
+														Batal
+													</span>
+											</a>
+                      </div>
                       </div>
                     </div>
                   </form>
