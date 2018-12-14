@@ -74,10 +74,9 @@ label {
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Striped Table</h4>
-                  <p class="card-description">
-                    Add class
-                    <code>.table-striped</code>
-				  </p>
+                  <h5 class="card-description">
+                   <a href="input.php">Tambah data</a>
+                  </h5>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
