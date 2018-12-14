@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2018 pada 21.36
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 5.6.38
+-- Generation Time: Dec 14, 2018 at 05:50 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 7.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_dosen`
+-- Table structure for table `data_dosen`
 --
 
 CREATE TABLE `data_dosen` (
@@ -39,7 +37,7 @@ CREATE TABLE `data_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `data_dosen`
+-- Dumping data for table `data_dosen`
 --
 
 INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `prodi`, `matkul`, `status`) VALUES
@@ -49,7 +47,7 @@ INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `prodi`, `matkul`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_mahasiswa`
+-- Table structure for table `data_mahasiswa`
 --
 
 CREATE TABLE `data_mahasiswa` (
@@ -63,7 +61,7 @@ CREATE TABLE `data_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `data_mahasiswa`
+-- Dumping data for table `data_mahasiswa`
 --
 
 INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email`, `no_telp`, `prodi`, `shift`, `status`) VALUES
@@ -74,7 +72,7 @@ INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email`, `no_telp`, `prodi`, `shift
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_prodi`
+-- Table structure for table `data_prodi`
 --
 
 CREATE TABLE `data_prodi` (
@@ -87,7 +85,7 @@ CREATE TABLE `data_prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `data_prodi`
+-- Dumping data for table `data_prodi`
 --
 
 INSERT INTO `data_prodi` (`kode`, `no_ijin`, `nama_prodi`, `ketua_prodi`, `email`, `status`) VALUES
@@ -96,7 +94,7 @@ INSERT INTO `data_prodi` (`kode`, `no_ijin`, `nama_prodi`, `ketua_prodi`, `email
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -104,58 +102,56 @@ CREATE TABLE `users` (
   `nama` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level` int(20) NOT NULL COMMENT '1=Admin, 2=Prodi, 3=Dosen, 4=Mahasiswa'
+  `level` varchar(255) NOT NULL COMMENT '1=Admin, 2=Prodi, 3=Dosen, 4=Mahasiswa'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `level`) VALUES
-(1, 'Administrator', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
-(2, 'Prodi informatika', 'prodi', '32b404761d910d277789cd91076d1459', 2),
-(3, 'Dosen', 'dosen', 'ce28eed1511f631af6b2a7bb0a85d636', 3),
-(4, 'Mahasiswa', 'mahasiswa', '5787be38ee03a9ae5360f54d9026465f', 4);
+(1, 'Administrator', 'admin', 'admin', 'admin'),
+(2, 'Prodi informatika', 'prodi', 'prodi', 'prodi'),
+(3, 'Dosen', 'dosen', 'dosen', 'dosen'),
+(4, 'Mahasiswa', 'mahasiswa', 'mahasiswa', 'mahasiswa');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `data_dosen`
+-- Indexes for table `data_dosen`
 --
 ALTER TABLE `data_dosen`
   ADD PRIMARY KEY (`nip`);
 
 --
--- Indeks untuk tabel `data_mahasiswa`
+-- Indexes for table `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
   ADD PRIMARY KEY (`nim`);
 
 --
--- Indeks untuk tabel `data_prodi`
+-- Indexes for table `data_prodi`
 --
 ALTER TABLE `data_prodi`
   ADD PRIMARY KEY (`kode`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
