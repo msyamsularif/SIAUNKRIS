@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2018 at 05:50 AM
+-- Generation Time: Dec 14, 2018 at 07:23 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -89,7 +89,8 @@ CREATE TABLE `data_prodi` (
 --
 
 INSERT INTO `data_prodi` (`kode`, `no_ijin`, `nama_prodi`, `ketua_prodi`, `email`, `status`) VALUES
-('KP-TIF', 'NO.35/27/007/2003', 'Informatika', 'Surmanto Sitio', 'informatika@unkris.ac.id', 'Aktif');
+('1234', '12/12/12', 'prodi', 'Tatang', 'bongolarif@yahoo.co.id', 'aktif'),
+('KP-TIF', 'NO.35/27/007/2003', 'Informatika', 'Petatang Peteteng', 'informatika@unkris.ac.id', 'Aktif');
 
 -- --------------------------------------------------------
 
