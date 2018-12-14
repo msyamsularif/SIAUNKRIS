@@ -1,18 +1,29 @@
+<?php 
+  if(isset($_GET['pesan'])){
+    if($_GET['pesan']=="gagal"){
+      echo "<script> alert('Username atau Password salah!');document.location.href='index.php'</script>";
+    }
+    else if($_GET['pesan']=="belum_login"){
+      echo "<script> alert('Anda Harus Login!');document.location.href='index.php'</script>";
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
-  <?php require "../partials/_head.php"; ?>
+  <?php require "partials/_head.php"; ?>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../public/css/style.css">
+  <link rel="stylesheet" href="public/css/style.css">
   <!-- endinject -->
 </head>
 
@@ -28,11 +39,11 @@
 
 		<!-- END::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
 			</div>
-              <form action="cek_login.php" method="post">
+              <form action="login_proses.php" method="post">
                 <div class="form-group">
                   <label class="label">Username</label>
                   <div class="input-group">
-                    <input type="text" name="username" class="form-control" placeholder="Username">
+                    <input type="text" name="username" class="form-control" placeholder="username">
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="mdi mdi-check-circle-outline"></i>
@@ -52,7 +63,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary submit-btn btn-block">Login</button>
+                  <button type="submit" name="submit" class="btn btn-primary submit-btn btn-block">Login</button>
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
@@ -93,12 +104,12 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="../vendors/js/vendor.bundle.base.js"></script>
-  <script src="../vendors/js/vendor.bundle.addons.js"></script>
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- inject:js -->
-  <script src="../public/js/off-canvas.js"></script>
-  <script src="../public/js/misc.js"></script>
+  <script src="public/js/off-canvas.js"></script>
+  <script src="public/js/misc.js"></script>
   <!-- endinject -->
 </body>
 

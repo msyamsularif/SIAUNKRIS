@@ -1,2 +1,3 @@
 <?php
-echo "Ini Tampilan Home";
+    include "login.php"
+?>

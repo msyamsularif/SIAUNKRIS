@@ -82,9 +82,7 @@ label {
           <div class="row">
 
           <?php
-          $sql = 'SELECT kode, no_ijin, nama_prodi, ketua_prodi, email, status
-		FROM data_prodi';
-
+          $sql = 'SELECT kode, no_ijin, nama_prodi, ketua_prodi, email, status FROM data_prodi';
           $query = mysqli_query($conn, $sql);
 
           if (!$query) {
@@ -92,51 +90,50 @@ label {
           }
 
           echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-<thead>
-<tr>
-    <th>Kode</th>
-    <th>Nomor Ijin</th>
-    <th>Nama Program Studi</th>
-    <th>Ketua</th>
-    <th>E-Mail</th>
-    <th>Status</th>
-    <th>Action</th>
-</tr>
-</thead>
-		<tbody>';
-
-          while ($row = mysqli_fetch_array($query)) {
-            echo '<tr>
-      <td>' . $row['kode'] . '</td>
-      <td>' . $row['no_ijin'] . '</td>
-      <td>' . $row['nama_prodi'] . '</td>
-      <td>' . $row['ketua_prodi'] . '</td>
-      <td>' . $row['email'] . '</td>
-      <td>' . $row['status'] . '</td>
-      <td>EDIT | DELETE</td>
-		</tr>';
-          }
-          echo '
-  </tbody>
-  <tfoot>
-    <tr>
-    <th>Kode</th>
-    <th>Nomor Ijin</th>
-    <th>Nama Program Studi</th>
-    <th>Ketua</th>
-    <th>E-Mail</th>
-    <th>Status</th>
-    <th>Action</th>
-    </tr>
-</tfoot>
-</table>';
-
-// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-          mysqli_free_result($query);
-
-// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-          mysqli_close($conn);
-          ?>
+            <thead>
+            <tr>
+                <th>Kode</th>
+                <th>Nomor Ijin</th>
+                <th>Nama Program Studi</th>
+                <th>Ketua</th>
+                <th>E-Mail</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+                <tbody>';
+            
+                      while ($row = mysqli_fetch_array($query)) {
+                        echo "<tr>";
+                        echo "<td>".$row['kode']."</td>";
+                        echo "<td>".$row['no_ijin']."</td>";
+                        echo "<td>".$row['nama_prodi']."</td>";
+                        echo "<td>".$row['ketua_prodi']."</td>";
+                        echo "<td>".$row['email']."</td>";
+                        echo "<td>".$row['status']."</td>";    
+                        echo "<td align='center'><a href='form-edit.php?kode=$row[kode]'>Edit</a> | <a href='delete.php?kode=$row[kode]'>Delete</a></td></tr>";     
+                      }
+                      echo '
+              </tbody>
+              <tfoot>
+                <tr>
+                <th>Kode</th>
+                <th>Nomor Ijin</th>
+                <th>Nama Program Studi</th>
+                <th>Ketua</th>
+                <th>E-Mail</th>
+                <th>Status</th>
+                <th>Action</th>
+                </tr>
+            </tfoot>
+            </table>';
+            
+            // Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
+                      mysqli_free_result($query);
+            
+            // Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
+                      mysqli_close($conn);
+                      ?>
                   </div>
                   </div>
                 </div>
