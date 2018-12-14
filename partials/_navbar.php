@@ -1,14 +1,15 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="index.html">
-          <img src="../public/images/logo.svg" alt="logo" />
+          <img src="../public/images/logo.png" alt="logo" height="100px" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
-          <img src="../public/images/logo-mini.svg" alt="logo" />
+          <img src="../public/images/logo-mini.png" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+        <!--
           <li class="nav-item">
             <a href="#" class="nav-link">Schedule
               <span class="badge badge-primary ml-1">New</span>
@@ -22,8 +23,10 @@
             <a href="#" class="nav-link">
               <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
           </li>
+          -->
         </ul>
         <ul class="navbar-nav navbar-nav-right">
+        <!--
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-file-document-box"></i>
@@ -134,9 +137,10 @@
               </a>
             </div>
           </li>
+          -->
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text"><?php isset($_SESSION['nama_user']); ?></span>
+              <span class="profile-text">NAMA_USER_AKTIF</span>
               <img class="img-xs rounded-circle" src="../public/images/faces/face1.jpg" alt="Profile image">
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">

@@ -7,9 +7,9 @@
                   <img src="../public/images/faces/face1.jpg" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php isset($_SESSION['nama_user']); ?></p>
+                  <p class="profile-name">NAMA_USER_AKTIF</p>
                   <div>
-                    <small class="designation text-muted">STATUS</small>
+                    <small class="designation text-muted">ADMIN</small>
                     <span class="status-indicator online"></span>
                   </div>
 

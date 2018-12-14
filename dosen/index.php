@@ -82,16 +82,16 @@ label {
           <div class="row">
 
           <?php
-            $sql = 'SELECT nip, nama, email, no_telp, prodi, matkul, status
+          $sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status
 		FROM data_dosen';
 
-            $query = mysqli_query($conn, $sql);
+          $query = mysqli_query($conn, $sql);
 
-            if (!$query) {
-                die('SQL Error: ' . mysqli_error($conn));
-            }
+          if (!$query) {
+            die('SQL Error: ' . mysqli_error($conn));
+          }
 
-            echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
+          echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
 <thead>
 <tr>
     <th>NIP</th>
@@ -99,6 +99,7 @@ label {
     <th>E-Mail</th>
     <th>No Telp.</th>
     <th>Prodi</th>
+    <th>Gender</th>
     <th>Mata Kuliah</th>
     <th>Status</th>
     <th>Action</th>
@@ -106,19 +107,20 @@ label {
 </thead>
 		<tbody>';
 
-            while ($row = mysqli_fetch_array($query)) {
-                echo '<tr>
+          while ($row = mysqli_fetch_array($query)) {
+            echo '<tr>
       <td>' . $row['nip'] . '</td>
       <td>' . $row['nama'] . '</td>
       <td>' . $row['email'] . '</td>
       <td>' . $row['no_telp'] . '</td>
       <td>' . $row['prodi'] . '</td>
+      <td>' . $row['gender'] . '</td>
       <td>' . $row['matkul'] . '</td>
       <td>' . $row['status'] . '</td>
       <td>EDIT | DELETE</td>
 		</tr>';
-            }
-            echo '
+          }
+          echo '
   </tbody>
   <tfoot>
     <tr>
@@ -127,6 +129,7 @@ label {
         <th>E-Mail</th>
         <th>No Telp.</th>
         <th>Prodi</th>
+        <th>Gender</th>
         <th>Mata Kuliah</th>
         <th>Status</th>
         <th>Action</th>
@@ -135,11 +138,11 @@ label {
 </table>';
 
 // Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-            mysqli_free_result($query);
+          mysqli_free_result($query);
 
 // Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-            mysqli_close($conn);
-            ?>
+          mysqli_close($conn);
+          ?>
                   </div>
                   </div>
                 </div>
