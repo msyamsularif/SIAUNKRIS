@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2018 at 07:23 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.6
+-- Waktu pembuatan: 14 Des 2018 pada 09.53
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_dosen`
+-- Struktur dari tabel `data_dosen`
 --
 
 CREATE TABLE `data_dosen` (
@@ -32,22 +34,23 @@ CREATE TABLE `data_dosen` (
   `email` varchar(50) NOT NULL,
   `no_telp` int(50) NOT NULL,
   `prodi` varchar(100) NOT NULL,
+  `gender` varchar(50) NOT NULL,
   `matkul` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `data_dosen`
+-- Dumping data untuk tabel `data_dosen`
 --
 
-INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `prodi`, `matkul`, `status`) VALUES
-(275875664, 'Sumanto Prayogi', 'example@email.com', 812555788, 'Informatika', 'Pemrograman Web', 'Aktif'),
-(275875665, 'Jono Sumito', 'example@email.com', 81265654, 'Informatika', 'Algoritma', 'Aktif');
+INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `prodi`, `gender`, `matkul`, `status`) VALUES
+(275875664, 'Sumanto Prayogi', 'example@email.com', 812555788, 'Informatika', 'Pria', 'Pemrograman Web', 'Aktif'),
+(275875665, 'Jono Sumito', 'example@email.com', 81265654, 'Informatika', 'Pria', 'Algoritma', 'Aktif');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_mahasiswa`
+-- Struktur dari tabel `data_mahasiswa`
 --
 
 CREATE TABLE `data_mahasiswa` (
@@ -61,7 +64,7 @@ CREATE TABLE `data_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `data_mahasiswa`
+-- Dumping data untuk tabel `data_mahasiswa`
 --
 
 INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email`, `no_telp`, `prodi`, `shift`, `status`) VALUES
@@ -72,7 +75,7 @@ INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email`, `no_telp`, `prodi`, `shift
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_prodi`
+-- Struktur dari tabel `data_prodi`
 --
 
 CREATE TABLE `data_prodi` (
@@ -85,17 +88,22 @@ CREATE TABLE `data_prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `data_prodi`
+-- Dumping data untuk tabel `data_prodi`
 --
 
 INSERT INTO `data_prodi` (`kode`, `no_ijin`, `nama_prodi`, `ketua_prodi`, `email`, `status`) VALUES
-('1234', '12/12/12', 'prodi', 'Tatang', 'bongolarif@yahoo.co.id', 'aktif'),
-('KP-TIF', 'NO.35/27/007/2003', 'Informatika', 'Petatang Peteteng', 'informatika@unkris.ac.id', 'Aktif');
+('KP-TIF', 'NO.PE/27/07/2003', 'Informatika', 'Surmanto Sitio', 'informatika@unkris.ac.id', 'Aktif'),
+('KP-TI', 'NO.PE/05/07/2018', 'Industri', 'Jono', 'example@email.com', 'Aktif'),
+('KP-TE', 'NO.PE/03/05/2016', 'Elektro', 'Sugiono', 'example@email.com', 'Aktif'),
+('KP-TM', 'NO.PE/02/01/2018', 'Mesin', 'Mawar', 'example@email.com', 'Aktif'),
+('KP-TP', 'NO.PE/25/12/2014', 'Perencanaan Wilayah & Kota', 'Jajang', 'example@email.com', 'Aktif'),
+('KP-TS', 'NO.PE/30/01/2017', 'Sipil', 'Martono', 'example@email.com', 'Aktif'),
+('KP-TA', 'NO.PE/23/03/2006', 'Arsitek', 'Tatang', 'example@email.com', 'Aktif');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -107,7 +115,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `level`) VALUES
@@ -121,38 +129,34 @@ INSERT INTO `users` (`id`, `nama`, `username`, `password`, `level`) VALUES
 --
 
 --
--- Indexes for table `data_dosen`
+-- Indeks untuk tabel `data_dosen`
 --
 ALTER TABLE `data_dosen`
   ADD PRIMARY KEY (`nip`);
 
 --
--- Indexes for table `data_mahasiswa`
+-- Indeks untuk tabel `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
   ADD PRIMARY KEY (`nim`);
 
 --
--- Indexes for table `data_prodi`
---
-ALTER TABLE `data_prodi`
-  ADD PRIMARY KEY (`kode`);
-
---
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

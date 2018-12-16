@@ -62,7 +62,7 @@ label {
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
-                <p>Like what you see? Check out our premium version for more.<a href="../sistem/logout.php">LOGOUT</a></p>
+                <p>Selamat Datang di Sistem Informasi Fakultas Teknik Universitas Krisnadwipayana<!--<a href="../sistem/logout.php">LOGOUT</a><--></p>
                 <a class="btn ml-auto download-button d-none d-md-block" href="https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank">Download Free Version</a>
                 <a class="btn purchase-button mt-4 mt-md-0" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Upgrade To Pro</a>
                 <i class="mdi mdi-close popup-dismiss d-none d-md-block"></i>
@@ -70,13 +70,13 @@ label {
             </div>
           </div>
           <div class="row">
-		  <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Striped Table</h4>
-                  <h5 class="card-description">
-                   <a href="input.php">Tambah data</a>
-                  </h5>
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Table Prodi</h4>
+              <h5 class="card-description">
+                <a href="input.php">Tambah data</a>
+              </h5>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
@@ -138,8 +138,8 @@ label {
                 </div>
               </div>
             </div>
-			<!-- Data Table -->
-		  </div>
+        <!-- Data Table -->
+        </div>
 			
 			<!-- Widget End -->
           <div class="row">
