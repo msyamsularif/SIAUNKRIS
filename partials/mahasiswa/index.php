@@ -1,12 +1,3 @@
-<?php
-	session_start();
- 
-	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level'] == ""){
-		header("location:../index.php?pesan=belum_login");
-	}
-	require_once '../koneksi.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require "../koneksi.php"; ?>
@@ -79,20 +70,32 @@ label {
             </div>
           </div>
           <div class="row">
-		  <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Striped Table</h4>
-                  <p class="card-description">
-                    Add class
-                    <code>.table-striped</code>
-				  </p>
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Table Mahasiswa</h4>
+              <h5 class="card-description">
+                <a href="input.php">Tambah data</a>
+              </h5>
+              <div class="btn-group">
+                <button type="button" class="btn btn-warning">Data Mahasiswa / Jurusan</button>
+                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Teknik Elektro</a>
+                  <a class="dropdown-item" href="#">Teknik Sipil</a>
+                  <a class="dropdown-item" href="#">Teknik Perencanaan Wilayah & Kota</a>
+                  <a class="dropdown-item" href="#">Teknik Industri</a>
+                  <a class="dropdown-item active" href="#">Teknik Informatika</a>
+                  <a class="dropdown-item" href="#">Teknik Mesin</a>
+                  <a class="dropdown-item" href="#">Teknik Arsitek</a>
+                </div>
+              </div>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
           <?php
-          $sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status
-		FROM data_dosen';
+          $sql = 'SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa';
 
           $query = mysqli_query($conn, $sql);
 
@@ -101,64 +104,61 @@ label {
           }
 
           echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-<thead>
-<tr>
-    <th>NIP</th>
-    <th>Nama</th>
-    <th>E-Mail</th>
-    <th>No Telp.</th>
-    <th>Prodi</th>
-    <th>Gender</th>
-    <th>Mata Kuliah</th>
-    <th>Status</th>
-    <th>Action</th>
-</tr>
-</thead>
-		<tbody>';
+            <thead>
+            <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>E-Mail</th>
+                <th>No Telp.</th>
+                <th>Prodi</th>
+                <th>Shift</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+                <tbody>';
+            
+                      while ($row = mysqli_fetch_array($query)) {
+                        echo '<tr>
+                  <td>' . $row['nim'] . '</td>
+                  <td>' . $row['nama'] . '</td>
+                  <td>' . $row['email'] . '</td>
+                  <td>' . $row['no_telp'] . '</td>
+                  <td>' . $row['prodi'] . '</td>
+                  <td>' . $row['shift'] . '</td>
+                  <td>' . $row['status'] . '</td>
+                  <td>EDIT | DELETE</td>
+                </tr>';
+                      }
+                      echo '
+              </tbody>
+              <tfoot>
+                <tr>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>E-Mail</th>
+                    <th>No Telp.</th>
+                    <th>Prodi</th>
+                    <th>Shift</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+            </table>';
+            
+            // Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
+            mysqli_free_result($query);
 
-          while ($row = mysqli_fetch_array($query)) {
-            echo '<tr>
-      <td>' . $row['nip'] . '</td>
-      <td>' . $row['nama'] . '</td>
-      <td>' . $row['email'] . '</td>
-      <td>' . $row['no_telp'] . '</td>
-      <td>' . $row['prodi'] . '</td>
-      <td>' . $row['gender'] . '</td>
-      <td>' . $row['matkul'] . '</td>
-      <td>' . $row['status'] . '</td>
-      <td>EDIT | DELETE</td>
-		</tr>';
-          }
-          echo '
-  </tbody>
-  <tfoot>
-    <tr>
-        <th>NIP</th>
-        <th>Nama</th>
-        <th>E-Mail</th>
-        <th>No Telp.</th>
-        <th>Prodi</th>
-        <th>Gender</th>
-        <th>Mata Kuliah</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-</tfoot>
-</table>';
-
-// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-          mysqli_free_result($query);
-
-// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-          mysqli_close($conn);
-          ?>
+            // Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
+            mysqli_close($conn);
+            ?>
                   </div>
                   </div>
                 </div>
               </div>
             </div>
-			<!-- Data Table -->
-		  </div>
+      		<!-- Data Table -->
+       	  </div>
 			
 			<!-- Widget End -->
           <div class="row">

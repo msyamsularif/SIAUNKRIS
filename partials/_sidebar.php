@@ -1,3 +1,6 @@
+<?php
+include("../koneksi.php");
+?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
@@ -7,9 +10,9 @@
                   <img src="../public/images/faces/face1.jpg" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">NAMA_USER_AKTIF</p>
+                  <p class="profile-name"><?php echo $_SESSION['nama'];?></p>
                   <div>
-                    <small class="designation text-muted">ADMIN</small>
+                    <small class="designation text-muted"><?php echo $_SESSION['level'];?></small>
                     <span class="status-indicator online"></span>
                   </div>
 

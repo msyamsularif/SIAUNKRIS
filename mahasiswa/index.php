@@ -1,3 +1,12 @@
+<?php
+	session_start();
+ 
+	// cek apakah yang mengakses halaman ini sudah login
+	if($_SESSION['level'] == ""){
+		header("location:../index.php?pesan=belum_login");
+	}
+	require_once '../koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require "../koneksi.php"; ?>
@@ -82,13 +91,13 @@ label {
                 <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Teknik Elektro</a>
-                  <a class="dropdown-item" href="#">Teknik Sipil</a>
-                  <a class="dropdown-item" href="#">Teknik Perencanaan Wilayah & Kota</a>
-                  <a class="dropdown-item" href="#">Teknik Industri</a>
-                  <a class="dropdown-item active" href="#">Teknik Informatika</a>
-                  <a class="dropdown-item" href="#">Teknik Mesin</a>
-                  <a class="dropdown-item" href="#">Teknik Arsitek</a>
+                  <a class="dropdown-item" href="../elektro">Teknik Elektro</a>
+                  <a class="dropdown-item" href="../sipil">Teknik Sipil</a>
+                  <a class="dropdown-item" href="../pwk">Teknik Perencanaan Wilayah & Kota</a>
+                  <a class="dropdown-item" href="../industri">Teknik Industri</a>
+                  <a class="dropdown-item" href="../informatika">Teknik Informatika</a>
+                  <a class="dropdown-item" href="../mesin">Teknik Mesin</a>
+                  <a class="dropdown-item" href="../arsitek">Teknik Arsitek</a>
                 </div>
               </div>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
@@ -119,16 +128,15 @@ label {
                 <tbody>';
             
                       while ($row = mysqli_fetch_array($query)) {
-                        echo '<tr>
-                  <td>' . $row['nim'] . '</td>
-                  <td>' . $row['nama'] . '</td>
-                  <td>' . $row['email'] . '</td>
-                  <td>' . $row['no_telp'] . '</td>
-                  <td>' . $row['prodi'] . '</td>
-                  <td>' . $row['shift'] . '</td>
-                  <td>' . $row['status'] . '</td>
-                  <td>EDIT | DELETE</td>
-                </tr>';
+                        echo "<tr>";
+                        echo "<td>".$row['nim']."</td>";
+                        echo "<td>".$row['nama']."</td>";
+                        echo "<td>".$row['email']."</td>";
+                        echo "<td>".$row['no_telp']."</td>";
+                        echo "<td>".$row['prodi']."</td>";
+                        echo "<td>".$row['shift']."</td>";
+                        echo "<td>".$row['status']."</td>";
+                        echo "<td align='center'><a href='form-edit.php?nim=$row[nim]'>Edit</a> | <a href='delete.php?nim=$row[nim]'>Delete</a></td></tr>";
                       }
                       echo '
               </tbody>

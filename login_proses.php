@@ -16,8 +16,9 @@ if(isset($_POST['submit']))
     else
     {
         $row = mysqli_fetch_assoc($query);
-        $_SESSION['username']=$row['username'];
+        $_SESSION['username'] = $row['username'];
         $_SESSION['level'] = $row['level'];
+        $_SESSION['nama'] = $row['nama'];
         
         if($row['level'] == "admin")
         {

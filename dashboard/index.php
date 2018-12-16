@@ -1,5 +1,11 @@
 <?php
-$page = "dashboard";
+	session_start();
+ 
+	// cek apakah yang mengakses halaman ini sudah login
+	if($_SESSION['level'] == ""){
+		header("location:../index.php?pesan=belum_login");
+	}
+	require_once '../koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

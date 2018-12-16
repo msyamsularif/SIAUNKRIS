@@ -79,20 +79,32 @@ label {
             </div>
           </div>
           <div class="row">
-		  <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Striped Table</h4>
-                  <p class="card-description">
-                    Add class
-                    <code>.table-striped</code>
-				  </p>
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Table Mahasiswa</h4>
+              <h5 class="card-description">
+                <a href="input.php">Tambah data</a>
+              </h5>
+              <div class="btn-group">
+                <button type="button" class="btn btn-warning">Data Mahasiswa / Jurusan</button>
+                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item active" href="index.php">Teknik Elektro</a>
+                  <a class="dropdown-item" href="../sipil">Teknik Sipil</a>
+                  <a class="dropdown-item" href="../pwk">Teknik Perencanaan Wilayah & Kota</a>
+                  <a class="dropdown-item" href="../industri">Teknik Industri</a>
+                  <a class="dropdown-item" href="../informatika">Teknik Informatika</a>
+                  <a class="dropdown-item" href="../mesin">Teknik Mesin</a>
+                  <a class="dropdown-item" href="../arsitek">Teknik Arsitek</a>
+                </div>
+              </div>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
           <?php
-          $sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status
-		FROM data_dosen';
+          $sql = 'SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa WHERE prodi = "elektro"';
 
           $query = mysqli_query($conn, $sql);
 
@@ -101,64 +113,60 @@ label {
           }
 
           echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-<thead>
-<tr>
-    <th>NIP</th>
-    <th>Nama</th>
-    <th>E-Mail</th>
-    <th>No Telp.</th>
-    <th>Prodi</th>
-    <th>Gender</th>
-    <th>Mata Kuliah</th>
-    <th>Status</th>
-    <th>Action</th>
-</tr>
-</thead>
-		<tbody>';
+            <thead>
+            <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>E-Mail</th>
+                <th>No Telp.</th>
+                <th>Prodi</th>
+                <th>Shift</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+                <tbody>';
+            
+                      while ($row = mysqli_fetch_array($query)) {
+                        echo "<tr>";
+                        echo "<td>".$row['nim']."</td>";
+                        echo "<td>".$row['nama']."</td>";
+                        echo "<td>".$row['email']."</td>";
+                        echo "<td>".$row['no_telp']."</td>";
+                        echo "<td>".$row['prodi']."</td>";
+                        echo "<td>".$row['shift']."</td>";
+                        echo "<td>".$row['status']."</td>";
+                        echo "<td align='center'><a href='form-edit.php?nim=$row[nim]'>Edit</a> | <a href='delete.php?nim=$row[nim]'>Delete</a></td></tr>";
+                      }
+                      echo '
+              </tbody>
+              <tfoot>
+                <tr>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>E-Mail</th>
+                    <th>No Telp.</th>
+                    <th>Prodi</th>
+                    <th>Shift</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+            </table>';
+            
+            // Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
+            mysqli_free_result($query);
 
-          while ($row = mysqli_fetch_array($query)) {
-            echo '<tr>
-      <td>' . $row['nip'] . '</td>
-      <td>' . $row['nama'] . '</td>
-      <td>' . $row['email'] . '</td>
-      <td>' . $row['no_telp'] . '</td>
-      <td>' . $row['prodi'] . '</td>
-      <td>' . $row['gender'] . '</td>
-      <td>' . $row['matkul'] . '</td>
-      <td>' . $row['status'] . '</td>
-      <td>EDIT | DELETE</td>
-		</tr>';
-          }
-          echo '
-  </tbody>
-  <tfoot>
-    <tr>
-        <th>NIP</th>
-        <th>Nama</th>
-        <th>E-Mail</th>
-        <th>No Telp.</th>
-        <th>Prodi</th>
-        <th>Gender</th>
-        <th>Mata Kuliah</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-</tfoot>
-</table>';
-
-// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-          mysqli_free_result($query);
-
-// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-          mysqli_close($conn);
-          ?>
+            // Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
+            mysqli_close($conn);
+            ?>
                   </div>
                   </div>
                 </div>
               </div>
             </div>
-			<!-- Data Table -->
-		  </div>
+      		<!-- Data Table -->
+       	  </div>
 			
 			<!-- Widget End -->
           <div class="row">

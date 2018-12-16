@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+include("../koneksi.php");
+
+//$sql = "SELECT * FROM users";
+//
+//$query = mysqli_query($conn, $sql);
+//
+//$row = mysqli_fetch_assoc($query);
+
+
+?>
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="index.html">
@@ -140,7 +153,7 @@
           -->
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">NAMA_USER_AKTIF</span>
+              <span class="profile-text"><?php echo $_SESSION['nama'];?></span>
               <img class="img-xs rounded-circle" src="../public/images/faces/face1.jpg" alt="Profile image">
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -166,7 +179,7 @@
               <a class="dropdown-item">
                 Check Inbox
               </a>
-              <a class="dropdown-item">
+              <a href="../logout.php" class="dropdown-item">
                 Sign Out
               </a>
             </div>

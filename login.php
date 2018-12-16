@@ -1,14 +1,3 @@
-<?php 
-  if(isset($_GET['pesan'])){
-    if($_GET['pesan']=="gagal"){
-      echo "<script> alert('Username atau Password salah!');document.location.href='index.php'</script>";
-    }
-    else if($_GET['pesan']=="belum_login"){
-      echo "<script> alert('Anda Harus Login!');document.location.href='index.php'</script>";
-    }
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +23,26 @@
         <div class="row w-100">
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
-			<div>
-		<!-- BEGIN::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
-
-		<!-- END::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
-			</div>
+              <div>
+                <!-- BEGIN::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
+                <?php 
+                if(isset($_GET['pesan'])){
+                  if($_GET['pesan']=="gagal"){
+                    //echo "<script> alert('Username atau Password salah!');document.location.href='index.php'</script>";
+                    echo "<div class='alert alert-danger'>
+                            <strong>Warning! </strong> Username Atau Password Salah!
+                          </div>";
+                  }
+                  else if($_GET['pesan']=="belum_login"){
+                    //echo "<script> alert('Anda Harus Login!');document.location.href='index.php'</script>";
+                    echo "<div class='alert alert-danger'>
+                            <strong>Warning! </strong> Anda Harus Login!
+                          </div>";
+                  }
+                }
+              ?>
+                <!-- END::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
+              </div>
               <form action="login_proses.php" method="post">
                 <div class="form-group">
                   <label class="label">Username</label>
@@ -64,22 +68,6 @@
                 </div>
                 <div class="form-group">
                   <button type="submit" name="submit" class="btn btn-primary submit-btn btn-block">Login</button>
-                </div>
-                <div class="form-group d-flex justify-content-between">
-                  <div class="form-check form-check-flat mt-0">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" checked> Keep me signed in
-                    </label>
-                  </div>
-                  <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-block g-login">
-                    <img class="mr-3" src="../../images/file-icons/icon-google.svg" alt="">Log in with Google</button>
-                </div>
-                <div class="text-block text-center my-3">
-                  <span class="text-small font-weight-semibold">Not a member ?</span>
-                  <a href="register.html" class="text-black text-small">Create new account</a>
                 </div>
               </form>
             </div>
