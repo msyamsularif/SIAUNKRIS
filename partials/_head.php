@@ -1,7 +1,7 @@
 <meta charset="utf-8" />
 <script>
 	//BEGIN::Javascript for Title
-		var txt="SISTEM AKADEMIK KAMPUS - UNIVERSITAS KRISNADWIPAYANA";
+	var txt="SISTEM AKADEMIK KAMPUS - UNIVERSITAS KRISNADWIPAYANA";
     	var speed=400;
     	var refresh=null;
     	function action() { document.title=txt;
