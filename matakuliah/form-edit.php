@@ -9,12 +9,12 @@
   include '../koneksi.php';
 
   // mengecek apakah di url ada nilai GET id
-  if (isset($_GET['kode'])) {
+  if (isset($_GET['kode_matkul'])) {
     // ambil nilai id dari url dan disimpan dalam variabel $id
-    $kode = ($_GET["kode"]);
+    $kode_matkul = ($_GET["kode_matkul"]);
 
     // menampilkan data mahasiswa dari database yang mempunyai id=$id
-    $query = "SELECT * FROM data_prodi WHERE kode='$kode'";
+    $query = "SELECT * FROM mata_kuliah WHERE kode_matkul='$kode_matkul'";
     $row = mysqli_query($conn, $query);
     // mengecek apakah query gagal
     if(!$row){
@@ -24,12 +24,10 @@
     // mengambil data dari database dan membuat variabel" utk menampung data
     // variabel ini nantinya akan ditampilkan pada form
     $row = mysqli_fetch_assoc($row);
-    $kode = $row["kode"];
-    $no_ijin = $row["no_ijin"];
-    $nama_prodi = $row["nama_prodi"];
-    $ketua_prodi = $row["ketua_prodi"];
-    $email = $row["email"];
-    $status = $row["status"];
+    $kode_matkul = $row["kode_matkul"];
+    $nama_matkul = $row["nama_matkul"];
+    $sks = $row["sks"];
+
   } else {
     // apabila tidak ada data GET id pada akan di redirect ke index.php
     header("location:index.php");
@@ -114,77 +112,36 @@ label {
                 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Edit Data Prodi</h4>
+                  <h4 class="card-title">Edit Data Matakuliah</h4>
                   <br/>
                   <form class="form-sample" action="proses-edit.php" method="post">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">KODE</label>
+                          <label class="col-sm-3 col-form-label">KODE MATKUL</label>
                           <div class="col-sm-9">
-                            <input type="text" name="kode" class="form-control" value="<?php echo $kode; ?>"/>
+                            <input type="text" name="kode_matkul" class="form-control" value="<?php echo $kode_matkul; ?>"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NO IJIN</label>
+                          <label class="col-sm-3 col-form-label">NAMA MATKUL </label>
                           <div class="col-sm-9">
-                            <input type="text" name="no_ijin" class="form-control" value="<?php echo $no_ijin; ?>"/>
+                            <input type="text" name="nama_matkul" class="form-control" value="<?php echo $nama_matkul; ?>"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NAMA PRODI</label>
+                          <label class="col-sm-3 col-form-label">SKS</label>
                           <div class="col-sm-9">
-                            <input type="text" name="nama_prodi" class="form-control" value="<?php echo $nama_prodi; ?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">KETUA PRODI</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="ketua_prodi" class="form-control" value="<?php echo $ketua_prodi; ?>" />
+                            <input type="text" name="sks" class="form-control" value="<?php echo $sks; ?>"/>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">EMAIL</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="email" class="form-control" value="<?php echo $email; ?>"/>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                      <div class="col-md-10">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Status</label>
-                          <?php $status = $row['status']; ?>
-                          <div class="col-sm-4">
-                            <div class="form-radio">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Aktif" <?php echo ($status == 'Aktif') ? "checked": "" ?>> Aktif
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-sm-5">
-                            <div class="form-radio">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Non Active" <?php echo ($status == 'Non Active') ? "checked": "" ?>> Non Active
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <br>
-                      </div>
                       <div class="row">
                       <div class="col-sm-6">
                         <input type="submit" class="btn btn-success btn-rounded btn-fw" name="edit" value="Update">

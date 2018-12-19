@@ -85,10 +85,8 @@ label {
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Input Data Prodi</h4>
+									<br/>
                   <form class="form-sample" action="input_proses.php" method="post">
-                    <p class="card-description">
-                      Personal info
-                    </p>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
