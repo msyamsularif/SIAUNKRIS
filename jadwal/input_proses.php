@@ -14,7 +14,7 @@ if(isset($_POST['input'])){
     $jam = $_POST["jam"];
 
     // buat query
-    $query = "INSERT INTO jadwal VALUE ('$kode_matkul_jadwal', '$nip_jadwal', '$kode_ruangan_jadwal', '$kode_prodi', '$hari', '$jam')";
+    $query = "INSERT INTO jadwal VALUE ('','$kode_matkul_jadwal', '$nip_jadwal', '$kode_ruangan_jadwal', '$kode_prodi', '$hari', '$jam')";
     $row = mysqli_query($conn, $query);
 
     // apakah query simpan berhasil?

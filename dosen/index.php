@@ -81,17 +81,15 @@ label {
 		  <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Striped Table</h4>
-                  <p class="card-description">
-                    Add class
-                    <code>.table-striped</code>
-				  </p>
+                  <h4 class="card-title">Table Dosen</h4>
+                 <h5 class="card-description">
+                <a href="input.php">Tambah data</a>
+                </h5>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
           <?php
-          $sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status
-		FROM data_dosen';
+          $sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status FROM data_dosen';
 
           $query = mysqli_query($conn, $sql);
 
@@ -114,20 +112,19 @@ label {
 </tr>
 </thead>
 		<tbody>';
-
+          
           while ($row = mysqli_fetch_array($query)) {
-            echo '<tr>
-      <td>' . $row['nip'] . '</td>
-      <td>' . $row['nama'] . '</td>
-      <td>' . $row['email'] . '</td>
-      <td>' . $row['no_telp'] . '</td>
-      <td>' . $row['prodi'] . '</td>
-      <td>' . $row['gender'] . '</td>
-      <td>' . $row['matkul'] . '</td>
-      <td>' . $row['status'] . '</td>
-      <td>EDIT | DELETE</td>
-		</tr>';
-          }
+          echo "<tr>";
+          echo "<td>".$row['nip']."</td>";
+          echo "<td>".$row['nama']."</td>";
+          echo "<td>".$row['email']."</td>";
+          echo "<td>".$row['no_telp']."</td>";
+          echo "<td>".$row['prodi']."</td>";
+          echo "<td>".$row['gender']."</td>";
+          echo "<td>".$row['matkul']."</td>";
+          echo "<td>".$row['status']."</td>";    
+          echo "<td align='center'><a href='form-edit.php?nip=$row[nip]'>Edit</a> | <a href='delete.php?nip=$row[nip]'>Delete</a></td></tr>";     
+           }
           echo '
   </tbody>
   <tfoot>

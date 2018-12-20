@@ -9,32 +9,15 @@
   include '../koneksi.php';
 
   // mengecek apakah di url ada nilai GET id
-  if (isset($_GET['id_jadwal'])) {
     // ambil nilai id dari url dan disimpan dalam variabel $id
     $id_jadwal = ($_GET["id_jadwal"]);
 
     // menampilkan data mahasiswa dari database yang mempunyai id=$id
-    $query = "SELECT * FROM jadwal WHERE id_jadwal='$id_jadwal'";
-    $row = mysqli_query($conn, $query);
-    // mengecek apakah query gagal
-    if(!$row){
-      die ("Query Error: ".mysqli_errno($conn).
-         " - ".mysqli_error($conn));
+    $query = mysqli_query($conn, "SELECT * FROM jadwal WHERE id_jadwal='$id_jadwal'");
+    if($query == false){
+      die ("Terjadi Kesalahan : ". mysqli_error($conn));
     }
-    // mengambil data dari database dan membuat variabel" utk menampung data
-    // variabel ini nantinya akan ditampilkan pada form
-    $row = mysqli_fetch_assoc($row);
-    $kode_matkul = $row["kode_matkul_jadwal"];
-    $nama_matkul = $row["nip_jadwal"];
-    $nama_dosen = $row["kode_ruangan_jadwal"];
-    $ruangan = $row["kode_prodi"];
-    $hari = $row["hari"];
-    $jam = $row["jam"];
-  } else {
-    // apabila tidak ada data GET id pada akan di redirect ke index.php
-    header("location:index.php");
-  }
-
+    while($row = mysqli_fetch_array($query)){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +99,8 @@ label {
                 <div class="card-body">
                   <h4 class="card-title">Edit Data Jadwal Kuliah</h4>
                   <br/>
-                  <form class="form-sample" action="proses-edit.php" method="post">
+                  <form class="form-sample" action="proses-edit.php" enctype="multipart/form-data" method="post">
+                    <input name="id_jadwal" type="hidden" value="<?php echo $id_jadwal; ?>"/>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
@@ -180,7 +164,7 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">RUANGAN</label>
                           <div class="col-sm-9">
-                            <select name="nip_jadwal" class="form-control">
+                            <select name="kode_ruangan_jadwal" class="form-control">
                             <?php
                               $query = mysqli_query($conn,"SELECT kode_ruangan_jadwal, kode_ruangan, nama_ruangan FROM jadwal INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan WHERE id_jadwal='$id_jadwal'");
                               if ($query == false){
@@ -240,7 +224,7 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">HARI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="hari" class="form-control" value="<?php echo $hari; ?>"/>
+                            <input type="text" name="hari" class="form-control" value="<?php echo $row['hari']; ?>"/>
                           </div>
                         </div>
                       </div>
@@ -248,7 +232,7 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">JAM</label>
                           <div class="col-sm-9">
-                            <input type="text" name="jam" class="form-control" value="<?php echo $jam; ?>"/>
+                            <input type="text" name="jam" class="form-control" value="<?php echo $row['jam']; ?>"/>
                           </div>
                         </div>
                       </div>
@@ -291,6 +275,7 @@ label {
             
           </div>
         </div>
+          <?php } ?>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <?php require "../partials/_fotter.php"; ?>

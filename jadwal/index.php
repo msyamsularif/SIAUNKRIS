@@ -89,15 +89,12 @@ label {
           <div class="row">
 
           <?php
-          $sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
-									kode_matkul, nama_matkul,
-									nip, nama,
-									kode_ruangan, nama_ruangan,
-									kode, nama_prodi FROM jadwal
+          $sql = 'SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
+									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi FROM jadwal
 									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
 									INNER JOIN data_dosen ON nip_jadwal=nip
 									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
-									INNER JOIN data_prodi ON kode_prodi=kode";
+									INNER JOIN data_prodi ON kode_prodi=kode';
           $query = mysqli_query($conn, $sql);
 
           if (!$query) {

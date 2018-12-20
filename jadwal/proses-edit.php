@@ -5,6 +5,7 @@ if (isset($_POST['edit'])) {
   include("../koneksi.php");
 
   // membuat variabel untuk menampung data dari form edit
+    $id_jadwal = $_POST["id_jadwal"];
     $kode_matkul_jadwal = $_POST["kode_matkul_jadwal"];
     $nip_jadwal = $_POST["nip_jadwal"];
     $kode_ruangan_jadwal = $_POST["kode_ruangan_jadwal"];    

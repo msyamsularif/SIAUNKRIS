@@ -1,24 +1,49 @@
 <?php
-	session_start();
-	include("../koneksi.php");
+  session_start();
+ 
 	// cek apakah yang mengakses halaman ini sudah login
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
-	$daftarhari[] = "Senin";
-	$daftarhari[] = "Selasa";
-	$daftarhari[] = "Rabu";
-	$daftarhari[] = "Kamis";
-	$daftarhari[] = "Jumat";
-	$daftarhari[] = "Sabtu";
-	$daftarhari[] = "Minggu";
+  // memanggil file koneksi.php untuk membuat koneksi
+  include '../koneksi.php';
+
+  // mengecek apakah di url ada nilai GET id
+  if (isset($_GET['nip'])) {
+    // ambil nilai id dari url dan disimpan dalam variabel $id
+    $nip = ($_GET["nip"]);
+
+    // menampilkan data mahasiswa dari database yang mempunyai id=$id
+    $query = "SELECT * FROM data_dosen WHERE nip='$nip'";
+    $row = mysqli_query($conn, $query);
+    // mengecek apakah query gagal
+    if(!$row){
+      die ("Query Error: ".mysqli_errno($conn).
+         " - ".mysqli_error($conn));
+    }
+    // mengambil data dari database dan membuat variabel" utk menampung data
+    // variabel ini nantinya akan ditampilkan pada form
+    $row = mysqli_fetch_assoc($row);
+    $nip = $row["nip"];
+    $nama = $row["nama"];
+    $email = $row["email"];
+    $no_telp = $row["no_telp"];
+    $prodi = $row["prodi"];
+    $gender = $row["gender"];
+    $matkul = $row["matkul"];
+    $status = $row["status"];
+  } else {
+    // apabila tidak ada data GET id pada akan di redirect ke index.php
+    header("location:index.php");
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
-  <?php require "../partials/_head.php"; ?>
+    <?php require "../partials/_head.php"; ?>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -85,88 +110,45 @@ label {
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
+		  <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input Data Jadwal Kuliah</h4>
-									<br/>
-                  <form class="form-sample" action="input_proses.php" method="post">
+                  <h4 class="card-title">Edit Data Dosen</h4>
+                  <br/>
+                  <form class="form-sample" action="proses-edit.php" method="post">
                     <div class="row">
-											 <div class="col-md-6">
+                      <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">MATAKULIAH</label>
+                          <label class="col-sm-3 col-form-label">NIP</label>
                           <div class="col-sm-9">
-                            <select name="kode_matkul_jadwal" class="form-control">
-															<?php
-																
-																$query = mysqli_query ($conn, "SELECT * FROM mata_kuliah");
-																if ($query == false){
-																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
-																}
-																while ($row = mysqli_fetch_array($query)){
-																	echo "<option value='$row[kode_matkul]'>$row[nama_matkul]</option>";
-																}
-															?>
-														</select>
-                          </div>
-                        </div>
-                      </div>
-											<div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NAMA DOSEN</label>
-                          <div class="col-sm-9">
-                            <select name="nip_jadwal" class="form-control">
-														<?php
-															$query = mysqli_query($conn, "SELECT * FROM data_dosen");
-															if ($query == false){
-																die ("Terdapat Kesalahan : ". mysqli_error($conn));
-															}
-															while ($row = mysqli_fetch_array($query)){
-																echo "<option value='$row[nip]'>$row[nama]</option>";
-															}
-														?>
-														</select>
+                            <input type="text" name="nip" class="form-control" value="<?php echo $nip; ?>"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">RUANGAN</label>
+                          <label class="col-sm-3 col-form-label">NAMA</label>
                           <div class="col-sm-9">
-                            <select name="kode_ruangan_jadwal" class="form-control">
-															<?php
-																
-																$query = mysqli_query($conn, "SELECT * FROM ruangan");
-																if($query == false){
-																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
-																}
-																while ($row = mysqli_fetch_array($query)){
-																	echo "<option value='$row[kode_ruangan]'>$row[nama_ruangan]</option>";
-																}
-															?>
-														</select>
+                            <input type="text" name="nama" class="form-control" value="<?php echo $nama; ?>"/>
                           </div>
                         </div>
                       </div>
-											<div class="col-md-6">
+                      <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">JURUSAN</label>
+                          <label class="col-sm-3 col-form-label">E-MAIL</label>
                           <div class="col-sm-9">
-                            <select name="kode_prodi" class="form-control">
-															<?php
-																
-																$query = mysqli_query($conn, "SELECT * FROM data_prodi");
-																if($query == false){
-																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
-																}
-																while ($row = mysqli_fetch_array($query)){
-																	echo "<option value='$row[kode]'>$row[nama_prodi]</option>";
-																}
-															?>
-														</select>
+                            <input type="text" name="email" class="form-control" value="<?php echo $email; ?>"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">NO-TELP</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="no_telp" class="form-control" value="<?php echo $no_telp; ?>" />
                           </div>
                         </div>
                       </div>
@@ -174,32 +156,58 @@ label {
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">HARI</label>
+                          <label class="col-sm-3 col-form-label">PRODI</label>
                           <div class="col-sm-9">
-                           <select name="hari" class="form-control">
-														<?php
-															for($hari=0; $hari<count($daftarhari); $hari++)
-															{
-																echo "<option value='$daftarhari[$hari]'>$daftarhari[$hari]</option>";
-															}
-														?>
-														</select>
+                            <input type="text" name="prodi" class="form-control" value="<?php echo $prodi; ?>"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">JAM</label>
+                          <label class="col-sm-3 col-form-label">GENDER</label>
                           <div class="col-sm-9">
-                            <input type="text" name="jam" class="form-control" />
+                            <input type="text" name="gender" class="form-control" value="<?php echo $gender; ?>"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">MATA-KULIAH</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="matkul" class="form-control" value="<?php echo $matkul; ?>"/>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                      <div class="col-md-10">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Status</label>
+                          <?php $status = $row['status']; ?>
+                          <div class="col-sm-4">
+                            <div class="form-radio">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="status" id="status" value="Aktif" <?php echo ($status == 'Aktif') ? "checked": "" ?>> Aktif
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-radio">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="status" id="status" value="Non Active" <?php echo ($status == 'Non Active') ? "checked": "" ?>> Non Active
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                      </div>
                       <div class="row">
                       <div class="col-sm-6">
-                        <input type="submit" class="btn btn-success btn-rounded btn-fw" name="input" value="Input">
+                        <input type="submit" class="btn btn-success btn-rounded btn-fw" name="edit" value="Update">
                       </div>
                       <div class="col-sm-6">
                       <a href="index.php" class="btn btn-danger btn-rounded btn-fw">
@@ -212,13 +220,12 @@ label {
                     </div>
                   </form>
                 </div>
-            <!--- end form input --->
-          </div>
-        </div>
-      </div>
-    </div>
-	<!-- Data Table -->
-	</div>
+              </div>
+            </div>
+              </div>
+            </div>
+			<!-- Data Table -->
+		  </div>
 			
 			<!-- Widget End -->
           <div class="row">

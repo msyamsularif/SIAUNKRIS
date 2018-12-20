@@ -1,17 +1,10 @@
 <?php
 	session_start();
-	include("../koneksi.php");
+ 
 	// cek apakah yang mengakses halaman ini sudah login
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
-	$daftarhari[] = "Senin";
-	$daftarhari[] = "Selasa";
-	$daftarhari[] = "Rabu";
-	$daftarhari[] = "Kamis";
-	$daftarhari[] = "Jumat";
-	$daftarhari[] = "Sabtu";
-	$daftarhari[] = "Minggu";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,82 +84,39 @@ label {
                 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input Data Jadwal Kuliah</h4>
+                  <h4 class="card-title">Input Data Dosen</h4>
 									<br/>
                   <form class="form-sample" action="input_proses.php" method="post">
                     <div class="row">
-											 <div class="col-md-6">
+                      <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">MATAKULIAH</label>
+                          <label class="col-sm-3 col-form-label">NIP</label>
                           <div class="col-sm-9">
-                            <select name="kode_matkul_jadwal" class="form-control">
-															<?php
-																
-																$query = mysqli_query ($conn, "SELECT * FROM mata_kuliah");
-																if ($query == false){
-																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
-																}
-																while ($row = mysqli_fetch_array($query)){
-																	echo "<option value='$row[kode_matkul]'>$row[nama_matkul]</option>";
-																}
-															?>
-														</select>
-                          </div>
-                        </div>
-                      </div>
-											<div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NAMA DOSEN</label>
-                          <div class="col-sm-9">
-                            <select name="nip_jadwal" class="form-control">
-														<?php
-															$query = mysqli_query($conn, "SELECT * FROM data_dosen");
-															if ($query == false){
-																die ("Terdapat Kesalahan : ". mysqli_error($conn));
-															}
-															while ($row = mysqli_fetch_array($query)){
-																echo "<option value='$row[nip]'>$row[nama]</option>";
-															}
-														?>
-														</select>
+                            <input type="text" name="nip" class="form-control" />
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">RUANGAN</label>
+                          <label class="col-sm-3 col-form-label">NAMA-DOSEN</label>
                           <div class="col-sm-9">
-                            <select name="kode_ruangan_jadwal" class="form-control">
-															<?php
-																
-																$query = mysqli_query($conn, "SELECT * FROM ruangan");
-																if($query == false){
-																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
-																}
-																while ($row = mysqli_fetch_array($query)){
-																	echo "<option value='$row[kode_ruangan]'>$row[nama_ruangan]</option>";
-																}
-															?>
-														</select>
+                            <input type="text" name="nama" class="form-control" />
                           </div>
                         </div>
                       </div>
-											<div class="col-md-6">
+                      <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">JURUSAN</label>
+                          <label class="col-sm-3 col-form-label">EMAIL</label>
                           <div class="col-sm-9">
-                            <select name="kode_prodi" class="form-control">
-															<?php
-																
-																$query = mysqli_query($conn, "SELECT * FROM data_prodi");
-																if($query == false){
-																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
-																}
-																while ($row = mysqli_fetch_array($query)){
-																	echo "<option value='$row[kode]'>$row[nama_prodi]</option>";
-																}
-															?>
-														</select>
+                            <input type="text" name="email" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">NO_TELP</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="no_telp" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -174,29 +124,54 @@ label {
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">HARI</label>
+                          <label class="col-sm-3 col-form-label">PRODI</label>
                           <div class="col-sm-9">
-                           <select name="hari" class="form-control">
-														<?php
-															for($hari=0; $hari<count($daftarhari); $hari++)
-															{
-																echo "<option value='$daftarhari[$hari]'>$daftarhari[$hari]</option>";
-															}
-														?>
-														</select>
+                            <input type="text" name="prodi" class="form-control" />
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">JAM</label>
+                          <label class="col-sm-3 col-form-label">GENDER</label>
                           <div class="col-sm-9">
-                            <input type="text" name="jam" class="form-control" />
+                            <input type="text" name="gender" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">MATKUL</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="matkul" class="form-control" />
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                      <div class="col-md-10">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Status</label>
+                          <div class="col-sm-4">
+                            <div class="form-radio">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="status" id="status" value="Aktif" checked> Aktif
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-radio">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="status" id="status" value="Non Active"> Non Active
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                      </div>
                       <div class="row">
                       <div class="col-sm-6">
                         <input type="submit" class="btn btn-success btn-rounded btn-fw" name="input" value="Input">
