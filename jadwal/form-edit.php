@@ -11,7 +11,14 @@
   // mengecek apakah di url ada nilai GET id
     // ambil nilai id dari url dan disimpan dalam variabel $id
     $id_jadwal = ($_GET["id_jadwal"]);
-
+    
+    $daftarhari[] = "Senin";
+    $daftarhari[] = "Selasa";
+    $daftarhari[] = "Rabu";
+    $daftarhari[] = "Kamis";
+    $daftarhari[] = "Jumat";
+    $daftarhari[] = "Sabtu";
+    $daftarhari[] = "Minggu";
     // menampilkan data mahasiswa dari database yang mempunyai id=$id
     $query = mysqli_query($conn, "SELECT * FROM jadwal WHERE id_jadwal='$id_jadwal'");
     if($query == false){
@@ -224,7 +231,18 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">HARI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="hari" class="form-control" value="<?php echo $row['hari']; ?>"/>
+                            <select name="hari" class="form-control">
+                            <?php
+                              echo "<option value='$row[hari]' selected>$row[hari]</option>";
+                              for($hari=0; $hari<count($daftarhari); $hari++){
+                                if($row["hari"] != $daftarhari[$hari])
+                                {
+                                  echo "<option value='$daftarhari[$hari]'>$daftarhari[$hari]</option>";
+                                }
+                                
+                              }
+                            ?>
+                            </select>
                           </div>
                         </div>
                       </div>

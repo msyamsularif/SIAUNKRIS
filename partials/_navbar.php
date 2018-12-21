@@ -157,7 +157,7 @@
                   </div>
                 </div>
               </a>
-              <a class="dropdown-item mt-2">
+              <!--<a class="dropdown-item mt-2">
                 Manage Accounts
               </a>
               <a class="dropdown-item">
@@ -165,7 +165,7 @@
               </a>
               <a class="dropdown-item">
                 Check Inbox
-              </a>
+              </a>-->
               <a href="../logout.php" class="dropdown-item">
                 Sign Out
               </a>

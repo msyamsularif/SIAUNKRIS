@@ -18,9 +18,9 @@ include("../koneksi.php");
 
                 </div>
               </div>
-              <button class="btn btn-success btn-block">New Project
+              <!--<button class="btn btn-success btn-block">New Project
                 <i class="mdi mdi-plus"></i>
-              </button>
+              </button>-->
             </div>
           </li>
           <li class="nav-item <?php if ($page == "dashboard") echo "active"; ?>" >
@@ -43,12 +43,12 @@ include("../koneksi.php");
                 <li class="nav-item <?php if ($page == "dosen") echo "active"; ?>">
                   <a class="nav-link" href="../dosen">Data Dosen</a>
                 </li>
-                <li class="nav-item <?php if ($page == "gradenilai") echo "active"; ?>">
+                <!--<li class="nav-item <?php if ($page == "gradenilai") echo "active"; ?>">
                   <a class="nav-link" href="#">Grade Nilai</a>
                 </li>
                 <li class="nav-item <?php if ($page == "tahunangkatan") echo "active"; ?>">
                   <a class="nav-link" href="#">Tahun Angkatan</a>
-                </li>
+                </li>-->
               </ul>
             </div>
           </li>
@@ -66,14 +66,17 @@ include("../koneksi.php");
             </a>
             <div class="collapse" id="ui-akademik">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item <?php if ($page == "tahunakademik") echo "active"; ?>">
+                <!--<li class="nav-item <?php if ($page == "tahunakademik") echo "active"; ?>">
                   <a class="nav-link" href="#">Tahun Akademik</a>
-                </li>
+                </li>-->
                 <li class="nav-item <?php if ($page == "matakuliah") echo "active"; ?>">
                   <a class="nav-link" href="../matakuliah">Mata Kuliah</a>
                 </li>
                 <li class="nav-item <?php if ($page == "jadwal") echo "active"; ?>">
                   <a class="nav-link" href="../jadwal">Jadwal kuliah</a>
+                </li>
+                <li class="nav-item <?php if ($page == "khs") echo "active"; ?>">
+                  <a class="nav-link" href="../ruangan">Ruangan</a>
                 </li>
                 <li class="nav-item <?php if ($page == "krs") echo "active"; ?>">
                   <a class="nav-link" href="#">Kartu Rencana Studi</a>
@@ -84,12 +87,13 @@ include("../koneksi.php");
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-keuangan" aria-expanded="false" aria-controls="ui-keuangan">
               <i class="menu-icon mdi mdi-square-inc-cash"></i>
               <span class="menu-title">Keuangan</span>
               <i class="menu-arrow"></i>
             </a>
+          </li>
           <li class="nav-item <?php if ($page == "penggunasistem") echo "active"; ?>">
             <a class="nav-link" href="#">
               <i class="menu-icon mdi mdi-account-settings-variant"></i>
@@ -107,6 +111,6 @@ include("../koneksi.php");
               <i class="menu-icon mdi mdi-worker"></i>
               <span class="menu-title">Team Pembuat</span>
             </a>
-          </li>
+          </li>-->
         </ul>
       </nav>

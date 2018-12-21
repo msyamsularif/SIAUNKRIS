@@ -1,10 +1,10 @@
 <?php
-  session_start();
+	session_start();
  
-  // cek apakah yang mengakses halaman ini sudah login
-  if($_SESSION['level'] == ""){
-    header("location:../index.php?pesan=belum_login");
-  }
+	// cek apakah yang mengakses halaman ini sudah login
+	if($_SESSION['level'] == ""){
+		header("location:../index.php?pesan=belum_login");
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,114 +84,58 @@ label {
                 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input Data Mahasiswa</h4>
-                  <br/>
+                  <h4 class="card-title">Input Data Ruangan</h4>
+									<br/>
                   <form class="form-sample" action="input_proses.php" method="post">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NIM</label>
+                          <label class="col-sm-3 col-form-label">KODE RUANGAN</label>
                           <div class="col-sm-9">
-                            <input type="text" name="nim" class="form-control" />
+                            <input type="text" name="kode_ruangan" class="form-control" />
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NAMA MAHASISWA</label>
+                          <label class="col-sm-3 col-form-label">NAMA RUANGAN</label>
                           <div class="col-sm-9">
-                            <input type="text" name="nama" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">EMAIL</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="email" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NO TELPON</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="no_telp" class="form-control" />
+                            <input type="text" name="nama_ruangan" class="form-control" />
                           </div>
                         </div>
                       </div>
                     </div>
+                  <div class="row">
                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">PRODI</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="prodi" value="Elektro" readonly="" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">SHIFT</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="shift" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                      <div class="col-md-10">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">STATUS</label>
-                          <div class="col-sm-4">
-                            <div class="form-radio">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Aktif" checked> Aktif
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-sm-5">
-                            <div class="form-radio">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Non Active"> Non Active
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <br>
-                      </div>
-                      <div class="row">
                       <div class="col-sm-6">
                         <input type="submit" class="btn btn-success btn-rounded btn-fw" name="input" value="Input">
                       </div>
                       <div class="col-sm-6">
-                      <a href="index.php" class="btn btn-danger btn-rounded btn-fw">
-                          <span>
-                            Batal
-                          </span>
-                      </a>
-                      </div>
+												<a href="index.php" class="btn btn-danger btn-rounded btn-fw">
+														<span>
+															Batal
+														</span>
+												</a>
                       </div>
                     </div>
-                  </form>
-                </div>
+                  </div>
+                </form>
+              </div>
             <!--- end form input --->
           </div>
         </div>
       </div>
     </div>
-  <!-- Data Table -->
-  </div>
-      
-      <!-- Widget End -->
+	<!-- Data Table -->
+	</div>
+			
+			<!-- Widget End -->
           <div class="row">
             
           </div>
           <div class="row">
-        <!--Visitor Begin-->
-        <!--Visitor End-->
+			  <!--Visitor Begin-->
+			  <!--Visitor End-->
           </div>
           <div class="row">
             <!-- Row -->

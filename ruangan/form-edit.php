@@ -1,17 +1,44 @@
 <?php
   session_start();
  
-  // cek apakah yang mengakses halaman ini sudah login
-  if($_SESSION['level'] == ""){
-    header("location:../index.php?pesan=belum_login");
+	// cek apakah yang mengakses halaman ini sudah login
+	if($_SESSION['level'] == ""){
+		header("location:../index.php?pesan=belum_login");
+	}
+  // memanggil file koneksi.php untuk membuat koneksi
+  include '../koneksi.php';
+
+  // mengecek apakah di url ada nilai GET id
+  if (isset($_GET['kode_ruangan'])) {
+    // ambil nilai id dari url dan disimpan dalam variabel $id
+    $kode_ruangan = ($_GET["kode_ruangan"]);
+
+    // menampilkan data mahasiswa dari database yang mempunyai id=$id
+    $query = "SELECT * FROM ruangan WHERE kode_ruangan='$kode_ruangan'";
+    $row = mysqli_query($conn, $query);
+    // mengecek apakah query gagal
+    if(!$row){
+      die ("Query Error: ".mysqli_errno($conn).
+         " - ".mysqli_error($conn));
+    }
+    // mengambil data dari database dan membuat variabel" utk menampung data
+    // variabel ini nantinya akan ditampilkan pada form
+    $row = mysqli_fetch_assoc($row);
+    $kode_ruangan = $row["kode_ruangan"];
+    $nama_ruangan = $row["nama_ruangan"];
+
+  } else {
+    // apabila tidak ada data GET id pada akan di redirect ke index.php
+    header("location:index.php");
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
-  <?php require "../partials/_head.php"; ?>
+    <?php require "../partials/_head.php"; ?>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -78,120 +105,63 @@ label {
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
+		  <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Input Data Mahasiswa</h4>
+                  <h4 class="card-title">Edit Data Matakuliah</h4>
                   <br/>
-                  <form class="form-sample" action="input_proses.php" method="post">
+                  <form class="form-sample" action="proses-edit.php" method="post">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NIM</label>
+                          <label class="col-sm-3 col-form-label">KODE RUANGAN</label>
                           <div class="col-sm-9">
-                            <input type="text" name="nim" class="form-control" />
+                            <input type="text" name="kode_ruangan" class="form-control" value="<?php echo $kode_ruangan; ?>"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NAMA MAHASISWA</label>
+                          <label class="col-sm-3 col-form-label">NAMA RUANGAN </label>
                           <div class="col-sm-9">
-                            <input type="text" name="nama" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">EMAIL</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="email" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">NO TELPON</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="no_telp" class="form-control" />
+                            <input type="text" name="nama_ruangan" class="form-control" value="<?php echo $nama_ruangan; ?>"/>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">PRODI</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="prodi" value="Elektro" readonly="" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">SHIFT</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="shift" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                      <div class="col-md-10">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">STATUS</label>
-                          <div class="col-sm-4">
-                            <div class="form-radio">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Aktif" checked> Aktif
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-sm-5">
-                            <div class="form-radio">
-                              <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Non Active"> Non Active
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <br>
-                      </div>
                       <div class="row">
                       <div class="col-sm-6">
-                        <input type="submit" class="btn btn-success btn-rounded btn-fw" name="input" value="Input">
+                        <input type="submit" class="btn btn-success btn-rounded btn-fw" name="edit" value="Update">
                       </div>
                       <div class="col-sm-6">
                       <a href="index.php" class="btn btn-danger btn-rounded btn-fw">
-                          <span>
-                            Batal
-                          </span>
-                      </a>
+													<span>
+														Batal
+													</span>
+											</a>
                       </div>
                       </div>
                     </div>
                   </form>
                 </div>
-            <!--- end form input --->
-          </div>
-        </div>
-      </div>
-    </div>
-  <!-- Data Table -->
-  </div>
-      
-      <!-- Widget End -->
+              </div>
+            </div>
+              </div>
+            </div>
+			<!-- Data Table -->
+		  </div>
+			
+			<!-- Widget End -->
           <div class="row">
             
           </div>
           <div class="row">
-        <!--Visitor Begin-->
-        <!--Visitor End-->
+			  <!--Visitor Begin-->
+			  <!--Visitor End-->
           </div>
           <div class="row">
             <!-- Row -->
