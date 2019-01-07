@@ -79,7 +79,7 @@ include("../koneksi.php");
                   <a class="nav-link" href="../ruangan">Ruangan</a>
                 </li>
                 <li class="nav-item <?php if ($page == "krs") echo "active"; ?>">
-                  <a class="nav-link" href="#">Kartu Rencana Studi</a>
+                  <a class="nav-link" href="../krs">Kartu Rencana Studi</a>
                 </li>
                 <li class="nav-item <?php if ($page == "khs") echo "active"; ?>">
                   <a class="nav-link" href="#">Kartu Hasil Studi</a>

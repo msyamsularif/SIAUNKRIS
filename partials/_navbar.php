@@ -140,7 +140,7 @@
           -->
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text"><?php echo $_SESSION['nama'];?></span>
+              <span class="profile-text">Hello, <?php echo $_SESSION['nama'];?> !</span>
               <img class="img-xs rounded-circle" src="../public/images/faces/face1.jpg" alt="Profile image">
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">

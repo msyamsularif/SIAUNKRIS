@@ -98,56 +98,56 @@ label {
           }
 
           echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-<thead>
-<tr>
-    <th>NIP</th>
-    <th>Nama</th>
-    <th>E-Mail</th>
-    <th>No Telp.</th>
-    <th>Prodi</th>
-    <th>Gender</th>
-    <th>Mata Kuliah</th>
-    <th>Status</th>
-    <th>Action</th>
-</tr>
-</thead>
-		<tbody>';
-          
-          while ($row = mysqli_fetch_array($query)) {
-          echo "<tr>";
-          echo "<td>".$row['nip']."</td>";
-          echo "<td>".$row['nama']."</td>";
-          echo "<td>".$row['email']."</td>";
-          echo "<td>".$row['no_telp']."</td>";
-          echo "<td>".$row['prodi']."</td>";
-          echo "<td>".$row['gender']."</td>";
-          echo "<td>".$row['matkul']."</td>";
-          echo "<td>".$row['status']."</td>";    
-          echo "<td align='center'><a href='form-edit.php?nip=$row[nip]'>Edit</a> | <a href='delete.php?nip=$row[nip]'>Delete</a></td></tr>";     
-           }
-          echo '
-  </tbody>
-  <tfoot>
-    <tr>
-        <th>NIP</th>
-        <th>Nama</th>
-        <th>E-Mail</th>
-        <th>No Telp.</th>
-        <th>Prodi</th>
-        <th>Gender</th>
-        <th>Mata Kuliah</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-</tfoot>
-</table>';
-
-// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-          mysqli_free_result($query);
-
-// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-          mysqli_close($conn);
-          ?>
+					<thead>
+					<tr>
+							<th>NIP</th>
+							<th>Nama</th>
+							<th>E-Mail</th>
+							<th>No Telp.</th>
+							<th>Prodi</th>
+							<th>Gender</th>
+							<th>Mata Kuliah</th>
+							<th>Status</th>
+							<th>Action</th>
+					</tr>
+					</thead>
+							<tbody>';
+										
+										while ($row = mysqli_fetch_array($query)) {
+										echo "<tr>";
+										echo "<td>".$row['nip']."</td>";
+										echo "<td>".$row['nama']."</td>";
+										echo "<td>".$row['email']."</td>";
+										echo "<td>".$row['no_telp']."</td>";
+										echo "<td>".$row['prodi']."</td>";
+										echo "<td>".$row['gender']."</td>";
+										echo "<td>".$row['matkul']."</td>";
+										echo "<td>".$row['status']."</td>";    
+										echo "<td align='center'><a href='form-edit.php?nip=$row[nip]'>Edit</a> | <a href='delete.php?nip=$row[nip]'>Delete</a></td></tr>";     
+										 }
+										echo '
+						</tbody>
+						<tfoot>
+							<tr>
+									<th>NIP</th>
+									<th>Nama</th>
+									<th>E-Mail</th>
+									<th>No Telp.</th>
+									<th>Prodi</th>
+									<th>Gender</th>
+									<th>Mata Kuliah</th>
+									<th>Status</th>
+									<th>Action</th>
+							</tr>
+					</tfoot>
+					</table>';
+					
+					// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
+										mysqli_free_result($query);
+					
+					// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
+										mysqli_close($conn);
+										?>
                   </div>
                   </div>
                 </div>

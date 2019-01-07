@@ -95,15 +95,16 @@ label {
 									INNER JOIN data_dosen ON nip_jadwal=nip
 									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
 									INNER JOIN data_prodi ON kode_prodi=kode';
-          $query = mysqli_query($conn, $sql);
+         
+				  $query = mysqli_query($conn, $sql);
 
           if (!$query) {
             die('SQL Error: ' . mysqli_error($conn));
           }
 
           echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-            <tr>
             <thead>
+						<tr>
                 <th>Nama Matkul</th>
                 <th>Nama Dosen</th>
                 <th>Ruangan</th>

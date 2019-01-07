@@ -138,7 +138,7 @@ label {
                         echo "<td>".$row['status']."</td>";
                         echo "<td align='center'><a href='form-edit.php?nim=$row[nim]'>Edit</a> | <a href='delete.php?nim=$row[nim]'>Delete</a></td></tr>";
                       }
-                      echo '
+              echo '
               </tbody>
               <tfoot>
                 <tr>

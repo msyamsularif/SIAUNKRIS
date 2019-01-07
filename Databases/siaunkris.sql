@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2018 at 12:32 PM
+-- Generation Time: Jan 07, 2019 at 06:17 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `data_dosen` (
-  `nip` int(50) NOT NULL,
+  `nip` varchar(255) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_telp` int(50) NOT NULL,
@@ -42,8 +42,9 @@ CREATE TABLE `data_dosen` (
 --
 
 INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `prodi`, `gender`, `matkul`, `status`) VALUES
-(275875664, 'Sumanto Prayogi', 'example@email.com', 812555788, 'Informatika', 'Pria', 'Pemrograman Web', 'Aktif'),
-(275875665, 'Jono Sumito', 'example@email.com', 81265654, 'Informatika', 'Pria', 'Algoritma', 'Aktif');
+('12345677', 'Yanto', 'bongolarif@yahoo.co.id', 8777, 'Arsitek', 'Laki-laki', 'Bahasa Indonesia', 'Aktif'),
+('275875664', 'M Syamsul Arif', 'example@email.com', 812555788, 'Informatika', 'Pria', 'Pemrograman Web', 'Aktif'),
+('275875665', 'Jono Sumito', 'example@email.com', 81265654, 'Informatika', 'Pria', 'Algoritma', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -53,7 +54,7 @@ INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `prodi`, `gender`, 
 
 CREATE TABLE `data_mahasiswa` (
   `nim` int(50) NOT NULL,
-  `nama` varchar(50) NOT NULL,
+  `nama` char(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_telp` int(50) NOT NULL,
   `prodi` varchar(100) NOT NULL,
@@ -66,13 +67,13 @@ CREATE TABLE `data_mahasiswa` (
 --
 
 INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email`, `no_telp`, `prodi`, `shift`, `status`) VALUES
-(5555, 'Nani', 'bongolarif@yahoo.co.id', 8777, 'Sipil', 'Reguler', 'Aktif'),
-(5638, 'Joko', 'bongolarif@yahoo.co.id', 8888, 'Elektro', 'Reguler', 'Aktif'),
-(8636, 'Boy', 'bongolarif@yahoo.co.id', 8888, 'Perencanaan Wilayah & Kota', 'Reguler', 'Aktif'),
-(23456, 'Arah langkah ', 'budi', 899, 'mesin', 'Reguler', 'Aktif'),
-(34895, 'Nanang', 'bongolarif@yahoo.co.id', 8777, 'Perencanaan Wilayah & Kota', 'Reguler', 'Aktif'),
+(5555, 'Nani Surnani', 'bongolarif@yahoo.co.id', 8777, 'Sipil', 'Reguler', 'Aktif'),
+(5638, 'Joko Minto', 'bongolarif@yahoo.co.id', 8888, 'Elektro', 'Reguler', 'Aktif'),
+(7896, 'Yaya', 'bongolarif@yahoo.co.id', 8777, 'Perencanaan Wilayah & Kota', 'Reguler', 'Aktif'),
+(23456, 'Arah langkah', 'budi', 899, 'mesin', 'Reguler', 'Aktif'),
 (67890, 'Ari', 'bongolarif@yahoo.co.id', 8888, 'Industri', 'Reguler', 'Aktif'),
-(123456, 'Retorasi waktu', 'bongolarif@yahoo.co.id', 8777, 'Arsitek', 'Reguler', 'Aktif'),
+(123456, 'Embrem Cekum', 'bongolarif@yahoo.co.id', 8777, 'Arsitek', 'Reguler', 'Aktif'),
+(1770231015, 'Jono embrem', 'bongolarif@yahoo.co.id', 8777, 'Arsitek', 'Reguler', 'Aktif'),
 (1770231019, 'Syamsul', 'example@email.com', 76665547, 'Informatika', 'Reguler', 'Aktif'),
 (1770231050, 'Willy Adinata Saragih', 'willy.adinata@gmail.com', 628165744, 'Informatika', 'Reguler', 'Aktif'),
 (1770231052, 'Rommy Andiansyah', 'example@email.com', 667546545, 'Informatika', 'Reguler', 'Aktif');
@@ -84,10 +85,10 @@ INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email`, `no_telp`, `prodi`, `shift
 --
 
 CREATE TABLE `data_prodi` (
-  `kode` varchar(100) NOT NULL,
+  `kode` varchar(255) NOT NULL,
   `no_ijin` varchar(100) NOT NULL,
-  `nama_prodi` varchar(100) NOT NULL,
-  `ketua_prodi` varchar(100) NOT NULL,
+  `nama_prodi` char(255) NOT NULL,
+  `ketua_prodi` char(255) NOT NULL,
   `email` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -97,7 +98,7 @@ CREATE TABLE `data_prodi` (
 --
 
 INSERT INTO `data_prodi` (`kode`, `no_ijin`, `nama_prodi`, `ketua_prodi`, `email`, `status`) VALUES
-('KP-TA', 'NO.PE/23/03/2006', 'Arsitek', 'Tatang', 'example@email.com', 'Aktif'),
+('KP-TA', 'NO.PE/03/05/2015', 'Arsitek', 'Tatang', 'example@email.com', 'Aktif'),
 ('KP-TE', 'NO.PE/03/05/2016', 'Elektro', 'Sugiono', 'example@email.com', 'Aktif'),
 ('KP-TI', 'NO.PE/05/07/2018', 'Industri', 'Jono', 'example@email.com', 'Aktif'),
 ('KP-TIF', 'NO.PE/27/07/2003', 'Informatika', 'Surmanto Sitio', 'informatika@unkris.ac.id', 'Aktif'),
@@ -114,10 +115,10 @@ INSERT INTO `data_prodi` (`kode`, `no_ijin`, `nama_prodi`, `ketua_prodi`, `email
 CREATE TABLE `jadwal` (
   `id_jadwal` int(11) NOT NULL,
   `kode_matkul_jadwal` varchar(255) NOT NULL,
-  `nip_jadwal` int(50) NOT NULL,
+  `nip_jadwal` varchar(255) NOT NULL,
   `kode_ruangan_jadwal` varchar(255) NOT NULL,
-  `kode_prodi` varchar(100) NOT NULL,
-  `hari` char(255) NOT NULL,
+  `kode_prodi` varchar(255) NOT NULL,
+  `hari` varchar(255) NOT NULL,
   `jam` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -126,8 +127,30 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `kode_matkul_jadwal`, `nip_jadwal`, `kode_ruangan_jadwal`, `kode_prodi`, `hari`, `jam`) VALUES
-(2, 'MK001', 275875664, 'R001', 'KP-TA', 'Senin', '12.30  - 12.40'),
-(5, 'MK005', 275875664, 'R002', 'KP-TI', 'Senin', '12.30  - 12.40');
+(27, 'MK001', '275875664', 'R001', 'KP-TP', 'Rabu', '12.30 - 12.40'),
+(28, 'MK004', '275875665', 'R003', 'KP-TIF', 'Kamis', '10.00-11.00'),
+(29, 'MK005', '275875664', 'R001', 'KP-TP', 'Sabtu', '12.30 - 12.40'),
+(30, 'MK002', '12345677', 'R003', 'KP-TIF', 'Kamis', '12.30 - 12.40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `krs`
+--
+
+CREATE TABLE `krs` (
+  `id` int(11) NOT NULL,
+  `kode_matkul_krs` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `krs`
+--
+
+INSERT INTO `krs` (`id`, `kode_matkul_krs`) VALUES
+(36, 'MK001'),
+(38, 'MK004'),
+(39, 'MK005');
 
 -- --------------------------------------------------------
 
@@ -150,7 +173,10 @@ INSERT INTO `mata_kuliah` (`kode_matkul`, `nama_matkul`, `sks`) VALUES
 ('MK002', 'Bahasa Inggris', 2),
 ('MK003', 'Pemrograman WEB', 4),
 ('MK004', 'Aljabar & Linear', 3),
-('MK005', 'Komputer Grafik', 3);
+('MK005', 'Komputer Grafik', 3),
+('MK006', 'Matematika Diskrit', 4),
+('MK007', 'Bahasa Indonesia', 2),
+('MK008', 'Sistem Operasi', 3);
 
 -- --------------------------------------------------------
 
@@ -169,7 +195,8 @@ CREATE TABLE `ruangan` (
 
 INSERT INTO `ruangan` (`kode_ruangan`, `nama_ruangan`) VALUES
 ('R001', 'Ruangan 302'),
-('R002', 'Ruangan 203');
+('R002', 'Ruangan 203'),
+('R003', 'Ruangan 306');
 
 -- --------------------------------------------------------
 
@@ -193,7 +220,8 @@ INSERT INTO `users` (`id`, `nama`, `username`, `password`, `level`) VALUES
 (1, 'Administrator', 'admin', 'admin', 'admin'),
 (2, 'Prodi informatika', 'prodi', 'prodi', 'prodi'),
 (3, 'Tatang', 'dosen', 'dosen', 'dosen'),
-(4, 'Syam', '1770231019', 'mahasiswa', 'mahasiswa');
+(4, 'Syam', '1770231019', 'mahasiswa', 'mahasiswa'),
+(5, 'Uci', '1770231055', 'uci', 'mahasiswa');
 
 --
 -- Indexes for dumped tables
@@ -221,7 +249,17 @@ ALTER TABLE `data_prodi`
 -- Indexes for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  ADD PRIMARY KEY (`id_jadwal`);
+  ADD PRIMARY KEY (`id_jadwal`),
+  ADD KEY `FK_jadwal_dosen` (`nip_jadwal`),
+  ADD KEY `FK_jadwal_ruangan` (`kode_ruangan_jadwal`),
+  ADD KEY `FK_jadwal_matakuliah` (`kode_matkul_jadwal`),
+  ADD KEY `FK_jadwal_jurusan` (`kode_prodi`);
+
+--
+-- Indexes for table `krs`
+--
+ALTER TABLE `krs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mata_kuliah`
@@ -249,12 +287,30 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `krs`
+--
+ALTER TABLE `krs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `jadwal`
+--
+ALTER TABLE `jadwal`
+  ADD CONSTRAINT `FK_jadwal_dosen` FOREIGN KEY (`nip_jadwal`) REFERENCES `data_dosen` (`nip`),
+  ADD CONSTRAINT `FK_jadwal_jurusan` FOREIGN KEY (`kode_prodi`) REFERENCES `data_prodi` (`kode`),
+  ADD CONSTRAINT `FK_jadwal_matakuliah` FOREIGN KEY (`kode_matkul_jadwal`) REFERENCES `mata_kuliah` (`kode_matkul`),
+  ADD CONSTRAINT `FK_jadwal_ruangan` FOREIGN KEY (`kode_ruangan_jadwal`) REFERENCES `ruangan` (`kode_ruangan`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

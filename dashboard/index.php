@@ -38,11 +38,129 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-					<div class="container">
-						<div class="jumbotron">
-							<h1>Helloo....</h1>
-							<h3>Selamat Datang di Sistem Informasi Akademik Fakultas Teknik Unkris</h3>
-						</div>
+					
+					<div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-school text-danger icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Total Mahasiswa</p>
+                      <div class="fluid-container">
+												<?php
+												$sql = 'SELECT * FROM data_mahasiswa';
+
+												$query = mysqli_query($conn, $sql);
+							
+												if (!$query) {
+													die('SQL Error: ' . mysqli_error($conn));
+												}
+												?>
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo mysqli_num_rows($query) ?></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Mahasiswa
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi  mdi-account-location text-warning icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Jumlah Dosen</p>
+                      <div class="fluid-container">
+												<?php
+												$sql = 'SELECT * FROM data_dosen';
+
+												$query = mysqli_query($conn, $sql);
+							
+												if (!$query) {
+													die('SQL Error: ' . mysqli_error($conn));
+												}
+												?>
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo mysqli_num_rows($query) ?></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Dosen
+                  </p>
+                </div>
+              </div>
+            </div>
+						<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-library-books text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Jumlah Matakuliah</p>
+                      <div class="fluid-container">
+												<?php
+												$sql = 'SELECT * FROM mata_kuliah';
+
+												$query = mysqli_query($conn, $sql);
+							
+												if (!$query) {
+													die('SQL Error: ' . mysqli_error($conn));
+												}
+												?>
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo mysqli_num_rows($query) ?></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Matkul
+                  </p>
+                </div>
+              </div>
+            </div>
+						<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-book text-info icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Total Ruangan</p>
+                      <div class="fluid-container">
+												<?php
+												$sql = 'SELECT * FROM ruangan';
+
+												$query = mysqli_query($conn, $sql);
+							
+												if (!$query) {
+													die('SQL Error: ' . mysqli_error($conn));
+												}
+												?>
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo mysqli_num_rows($query) ?></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Ruangan
+                  </p>
+                </div>
+              </div>
+            </div>				
+          </div>
+					
+					<div class="jumbotron">
+						<h1>Helloo....</h1>
+						<h3>Selamat Datang di Sistem Informasi Akademik Fakultas Teknik Unkris</h3>
 					</div>
         </div>
         <!-- content-wrapper ends -->
