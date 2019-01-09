@@ -64,7 +64,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Mahasiswa
+                    <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Mahasiswa
                   </p>
                 </div>
               </div>
@@ -93,7 +93,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Dosen
+                    <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Dosen
                   </p>
                 </div>
               </div>
@@ -122,7 +122,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Matkul
+                    <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Matkul
                   </p>
                 </div>
               </div>
@@ -151,7 +151,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Data Ruangan
+                    <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Ruangan
                   </p>
                 </div>
               </div>

@@ -135,7 +135,7 @@ hr{
 								<div class="row">
 						
 										<?php
-										$sql = 'SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id,
+										$sql = 'SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id, sks,
 														kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi FROM jadwal
 														INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
 														INNER JOIN krs ON kode_matkul_jadwal=kode_matkul_krs
@@ -155,6 +155,7 @@ hr{
 													<th>NO</th>
 													<th>Kode Matkul</th>
 													<th>Nama Matkul</th>
+													<th>SKS</th>
 													<th>Nama Dosen</th>
 													<th>Hari</th>
 													<th>Jam</th>
@@ -168,6 +169,7 @@ hr{
 																	echo "<td>".$no."</td>";
 																	echo "<td>".$row['kode_matkul_krs']."</td>";
 																	echo "<td>".$row['nama_matkul']."</td>";
+																	echo "<td>".$row['sks']."</td>";
 																	echo "<td>".$row['nama']."</td>";
 																	echo "<td>".$row['hari']."</td>";
 																	echo "<td>".$row['jam']."</td>";
@@ -181,6 +183,7 @@ hr{
 														<th>NO</th>
 														<th>Kode Matkul</th>
 														<th>Nama Matkul</th>
+														<th>SKS</th>
 														<th>Nama Dosen</th>
 														<th>Hari</th>
 														<th>Jam</th>
