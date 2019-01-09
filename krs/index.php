@@ -86,7 +86,7 @@ hr{
             <div class="card-body">
               <h4 class="card-title">Table KRS</h4>
 							<h5 class="card-description">
-                <a href="input.php">Tambah data</a>
+                <a href="input.php">Input KRS</a>
               </h5>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
 <!--					<div class="row">
