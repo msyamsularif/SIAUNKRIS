@@ -89,8 +89,12 @@ label {
           <div class="row">
 
           <?php
-          $sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status FROM data_dosen';
-
+					if($_SESSION['level'] == "admin"){
+						$sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status FROM data_dosen';
+					}
+					else if($_SESSION['level'] == "prodi"){
+						$sql = "SELECT nip, nama, email, no_telp, prodi, gender, matkul, status FROM data_dosen WHERE prodi='$_SESSION[prodi_user]'";
+					}
           $query = mysqli_query($conn, $sql);
 
           if (!$query) {
@@ -122,7 +126,7 @@ label {
 										echo "<td>".$row['prodi']."</td>";
 										echo "<td>".$row['gender']."</td>";
 										echo "<td>".$row['matkul']."</td>";
-										echo "<td>".$row['status']."</td>";    
+										echo "<td>".$row['status']."</td>";
 										echo "<td align='center'><a href='form-edit.php?nip=$row[nip]'>Edit</a> | <a href='delete.php?nip=$row[nip]'>Delete</a></td></tr>";     
 										 }
 										echo '

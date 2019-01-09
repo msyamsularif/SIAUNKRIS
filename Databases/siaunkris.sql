@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2019 at 06:17 AM
+-- Generation Time: Jan 09, 2019 at 12:53 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -148,9 +148,10 @@ CREATE TABLE `krs` (
 --
 
 INSERT INTO `krs` (`id`, `kode_matkul_krs`) VALUES
-(36, 'MK001'),
-(38, 'MK004'),
-(39, 'MK005');
+(41, 'MK001'),
+(42, 'MK002'),
+(43, 'MK004'),
+(44, 'MK005');
 
 -- --------------------------------------------------------
 
@@ -206,22 +207,23 @@ INSERT INTO `ruangan` (`kode_ruangan`, `nama_ruangan`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
+  `nama_user` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level` varchar(255) NOT NULL COMMENT '1=Admin, 2=Prodi, 3=Dosen, 4=Mahasiswa'
+  `level` varchar(255) NOT NULL COMMENT '1=Admin, 2=Prodi, 3=Dosen, 4=Mahasiswa',
+  `prodi_user` char(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nama`, `username`, `password`, `level`) VALUES
-(1, 'Administrator', 'admin', 'admin', 'admin'),
-(2, 'Prodi informatika', 'prodi', 'prodi', 'prodi'),
-(3, 'Tatang', 'dosen', 'dosen', 'dosen'),
-(4, 'Syam', '1770231019', 'mahasiswa', 'mahasiswa'),
-(5, 'Uci', '1770231055', 'uci', 'mahasiswa');
+INSERT INTO `users` (`id`, `nama_user`, `username`, `password`, `level`, `prodi_user`) VALUES
+(1, 'Administrator', 'admin', 'admin', 'admin', ''),
+(2, 'Prodi Arsitek', 'prodi_arsitek', 'prodi', 'prodi', 'Arsitek'),
+(3, 'Tatang', 'dosen', 'dosen', 'dosen', 'informatika'),
+(4, 'Syam', '1770231019', 'mahasiswa', 'mahasiswa', 'informatika'),
+(6, 'Prodi Informatika', 'prodi_informatika', 'prodi', 'prodi', 'Informatika');
 
 --
 -- Indexes for dumped tables
@@ -292,12 +294,12 @@ ALTER TABLE `jadwal`
 -- AUTO_INCREMENT for table `krs`
 --
 ALTER TABLE `krs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --

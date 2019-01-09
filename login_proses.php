@@ -18,7 +18,8 @@ if(isset($_POST['submit']))
         $row = mysqli_fetch_assoc($query);
         $_SESSION['username'] = $row['username'];
         $_SESSION['level'] = $row['level'];
-        $_SESSION['nama'] = $row['nama'];
+        $_SESSION['nama_user'] = $row['nama_user'];
+        $_SESSION['prodi_user'] = $row['prodi_user'];
         
         if($row['level'] == "admin")
         {

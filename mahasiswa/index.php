@@ -86,28 +86,36 @@ label {
               <h5 class="card-description">
                 <a href="input.php">Tambah data</a>
               </h5>
-              <div class="btn-group">
-                <button type="button" class="btn btn-warning">Data Mahasiswa / Jurusan</button>
-                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="../elektro">Teknik Elektro</a>
-                  <a class="dropdown-item" href="../sipil">Teknik Sipil</a>
-                  <a class="dropdown-item" href="../pwk">Teknik Perencanaan Wilayah & Kota</a>
-                  <a class="dropdown-item" href="../industri">Teknik Industri</a>
-                  <a class="dropdown-item" href="../informatika">Teknik Informatika</a>
-                  <a class="dropdown-item" href="../mesin">Teknik Mesin</a>
-                  <a class="dropdown-item" href="../arsitek">Teknik Arsitek</a>
-                </div>
-              </div>
+							<?php
+							if($_SESSION['level'] == "admin"){
+								echo'
+								<div class="btn-group">
+									<button type="button" class="btn btn-warning">Data Mahasiswa / Jurusan</button>
+									<button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+									</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="../elektro">Teknik Elektro</a>
+										<a class="dropdown-item" href="../sipil">Teknik Sipil</a>
+										<a class="dropdown-item" href="../pwk">Teknik Perencanaan Wilayah & Kota</a>
+										<a class="dropdown-item" href="../industri">Teknik Industri</a>
+										<a class="dropdown-item" href="../informatika">Teknik Informatika</a>
+										<a class="dropdown-item" href="../mesin">Teknik Mesin</a>
+										<a class="dropdown-item" href="../arsitek">Teknik Arsitek</a>
+									</div>
+								</div>';
+							}
+							?>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
           <?php
-          $sql = 'SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa';
-
-          $query = mysqli_query($conn, $sql);
-
+					if($_SESSION['level'] == "admin"){
+						$sql = 'SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa';
+					}
+					else if($_SESSION['level'] == "prodi"){
+						$sql = "SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa WHERE prodi='$_SESSION[prodi_user]'";
+					}
+					$query = mysqli_query($conn, $sql);
           if (!$query) {
             die('SQL Error: ' . mysqli_error($conn));
           }

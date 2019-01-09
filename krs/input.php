@@ -188,8 +188,22 @@ hr{
 														<th>Action</th>
 													</tr>
 											</tfoot>
-											</table>						
-											<input type="submit" name="input" value="Submit" />
+											</table>
+											</br>
+											<div class="container">
+												<div class="row">
+												<div class="col-sm-2">
+													<input type="submit" class="btn btn-success btn-rounded btn-fw" name="input" value="Input">
+												</div>
+												<div class="col-sm-2">
+												<a href="index.php" class="btn btn-danger btn-rounded btn-fw">
+														<span>
+															Batal
+														</span>
+												</a>
+												</div>
+                      </div>
+                    </div>
 											</form>';
 											
 											// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
