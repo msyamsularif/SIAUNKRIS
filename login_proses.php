@@ -17,26 +17,28 @@ if(isset($_POST['submit']))
     {
         $row = mysqli_fetch_assoc($query);
         $_SESSION['username'] = $row['username'];
+        $_SESSION['password'] = $row['password'];
         $_SESSION['level'] = $row['level'];
+        $_SESSION['nip_user'] = $row['nip_user'];
         $_SESSION['nama_user'] = $row['nama_user'];
         $_SESSION['prodi_user'] = $row['prodi_user'];
         
-        if($row['level'] == "admin")
+        if($row['level'] == "1")
         {
             
             header("Location:dashboard/index.php");
         }
-        else if($row['level'] == "dosen")
+        else if($row['level'] == "3")
         {
             
             header("Location:dashboard/index.php");
         }
-        else if($row['level'] == "prodi")
+        else if($row['level'] == "2")
         {
             
             header("Location:dashboard/index.php");
         }
-        else if($row['level'] == "mahasiswa")
+        else if($row['level'] == "4")
         {
             
             header("Location:dashboard/index.php");

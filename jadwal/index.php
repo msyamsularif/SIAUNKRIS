@@ -5,6 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
+	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "3" || $_SESSION['level'] == "4") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,13 +90,31 @@ label {
           <div class="row">
 
           <?php
+					if($_SESSION['level'] == "1"){
           $sql = 'SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
 									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi FROM jadwal
 									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
 									INNER JOIN data_dosen ON nip_jadwal=nip
 									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
 									INNER JOIN data_prodi ON kode_prodi=kode';
-         
+					}
+					else if($_SESSION['level'] == "3"){
+          $sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
+									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nip_user FROM jadwal
+									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
+									INNER JOIN data_dosen ON nip_jadwal=nip
+									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
+									INNER JOIN data_prodi ON kode_prodi=kode
+									INNER JOIN users ON nip_jadwal=nip_user WHERE nip_jadwal='$_SESSION[nip_user]'";
+					}
+					else if($_SESSION['level'] == "4"){
+          $sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
+									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi FROM jadwal
+									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
+									INNER JOIN data_dosen ON nip_jadwal=nip
+									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
+									INNER JOIN data_prodi ON kode_prodi=kode";
+					}
 				  $query = mysqli_query($conn, $sql);
 
           if (!$query) {
@@ -195,5 +214,10 @@ label {
   <script src="../public/js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
+<?php
+	}
+	else{
+		header("location:../error-404.php");
+	}
+?>
 </html>

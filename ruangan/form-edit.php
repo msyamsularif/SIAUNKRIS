@@ -111,7 +111,7 @@ label {
                 <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Edit Data Matakuliah</h4>
+                  <h4 class="card-title">Edit Data Ruangan</h4>
                   <br/>
                   <form class="form-sample" action="proses-edit.php" method="post">
                     <div class="row">

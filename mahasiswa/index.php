@@ -5,7 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
-	require_once '../koneksi.php';
+	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "2") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +87,7 @@ label {
                 <a href="input.php">Tambah data</a>
               </h5>
 							<?php
-							if($_SESSION['level'] == "admin"){
+							if($_SESSION['level'] == "1"){
 								echo'
 								<div class="btn-group">
 									<button type="button" class="btn btn-warning">Data Mahasiswa / Jurusan</button>
@@ -109,10 +109,10 @@ label {
           <div class="row">
 
           <?php
-					if($_SESSION['level'] == "admin"){
+					if($_SESSION['level'] == "1"){
 						$sql = 'SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa';
 					}
-					else if($_SESSION['level'] == "prodi"){
+					else if($_SESSION['level'] == "2"){
 						$sql = "SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa WHERE prodi='$_SESSION[prodi_user]'";
 					}
 					$query = mysqli_query($conn, $sql);
@@ -216,5 +216,10 @@ label {
   <script src="../public/js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
+<?php
+	}
+	else{
+		header("location:../error-404.php");
+	}
+?>
 </html>

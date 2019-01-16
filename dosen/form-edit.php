@@ -28,9 +28,8 @@
     $nama = $row["nama"];
     $email = $row["email"];
     $no_telp = $row["no_telp"];
-    $prodi = $row["prodi"];
     $gender = $row["gender"];
-    $matkul = $row["matkul"];
+    $prodi = $row["prodi"];
     $status = $row["status"];
   } else {
     // apabila tidak ada data GET id pada akan di redirect ke index.php
@@ -156,27 +155,17 @@ label {
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">PRODI</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="prodi" class="form-control" value="<?php echo $prodi; ?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
                           <label class="col-sm-3 col-form-label">GENDER</label>
                           <div class="col-sm-9">
                             <input type="text" name="gender" class="form-control" value="<?php echo $gender; ?>"/>
                           </div>
                         </div>
                       </div>
-                    </div>
-                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">MATA-KULIAH</label>
+                          <label class="col-sm-3 col-form-label">PRODI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="matkul" class="form-control" value="<?php echo $matkul; ?>"/>
+                            <input type="text" name="prodi" class="form-control" value="<?php echo $prodi; ?>"/>
                           </div>
                         </div>
                       </div>

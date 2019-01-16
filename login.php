@@ -14,6 +14,13 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="public/css/style.css">
   <!-- endinject -->
+  <style>
+    .logo img{
+      width: 100%;
+      height: 100%;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -23,6 +30,11 @@
         <div class="row w-100">
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
+            <div class="container">
+              <a class="logo">
+                <img src="public/images/logo_teknik.png">
+              </a>
+            </div>
               <div>
                 <!-- BEGIN::Menampilkan Keterangan Gagal Jika Username dan Password Gagal -->
                 <?php 
@@ -82,7 +94,7 @@
                 <a href="#">Terms</a>
               </li>
             </ul>
-            <p class="footer-text text-center">copyright © 2018 <a href="https://localhost/siaunkris">SIA Unkris</a>. All rights reserved.</p>
+            <p class="footer-text text-center">copyright © 2019 <a href="https://localhost/siaunkris">SIA Unkris</a>. All rights reserved.</p>
           </div>
         </div>
       </div>

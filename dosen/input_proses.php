@@ -10,13 +10,12 @@ if(isset($_POST['input'])){
     $nama = $_POST["nama"];
     $email = $_POST["email"];
     $no_telp = $_POST["no_telp"];
-    $prodi = $_POST["prodi"];
     $gender = $_POST["gender"];
-    $matkul = $_POST["matkul"];
+    $prodi = $_POST["prodi"];
     $status = $_POST["status"];
 
     // buat query
-    $query = "INSERT INTO data_dosen VALUE ('$nip', '$nama', '$email', '$no_telp', '$prodi','$gender','$matkul','$status')";
+    $query = "INSERT INTO data_dosen VALUE ('$nip', '$nama', '$email', '$no_telp',' $gender', '$prodi', '$status')";
     $row = mysqli_query($conn, $query);
 
     // apakah query simpan berhasil?

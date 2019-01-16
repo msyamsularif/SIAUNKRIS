@@ -9,16 +9,15 @@ if (isset($_POST['edit'])) {
     $nama = $_POST["nama"];
     $email = $_POST["email"];
     $no_telp = $_POST["no_telp"];
-    $prodi = $_POST["prodi"];
     $gender = $_POST["gender"];
-    $matkul = $_POST["matkul"];
+    $prodi = $_POST["prodi"];
     $status = $_POST["status"];
 
   //buat dan jalankan query UPDATE
   $query  = "UPDATE data_dosen SET ";
   $query .= "nip = '$nip', nama = '$nama', ";
   $query .= "email='$email', ";
-  $query .= "no_telp = '$no_telp', prodi= '$prodi', gender= '$gender', matkul ='$matkul', status= '$status' ";
+  $query .= "no_telp = '$no_telp', gender= '$gender', prodi ='$prodi', status= '$status' ";
   $query .= "WHERE nip = '$nip'";
 
   $row = mysqli_query($conn, $query);

@@ -124,27 +124,17 @@ label {
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">PRODI</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="prodi" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
                           <label class="col-sm-3 col-form-label">GENDER</label>
                           <div class="col-sm-9">
                             <input type="text" name="gender" class="form-control" />
                           </div>
                         </div>
                       </div>
-                    </div>
-                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">MATKUL</label>
+                          <label class="col-sm-3 col-form-label">PRODI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="matkul" class="form-control" />
+                            <input type="text" name="prodi" class="form-control" />
                           </div>
                         </div>
                       </div>

@@ -8,22 +8,58 @@
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
+        <!--jam-->
+        <script type="text/javascript">
+            // 1 detik = 1000
+            window.setTimeout("waktu()",1000);  
+            function waktu() {   
+            var tanggal = new Date();  
+            setTimeout("waktu()",1000);  
+            document.getElementById("jam").innerHTML = tanggal.getHours()+":"+tanggal.getMinutes()+":"+tanggal.getSeconds();
+            }
+        </script>
+        <!--tanggal-->
+        <script language="JavaScript">
+            var tanggallengkap = new String();
+            var namahari = ("Minggu Senin Selasa Rabu Kamis Jumat Sabtu");
+            namahari = namahari.split(" ");
+            var namabulan = ("Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember");
+            namabulan = namabulan.split(" ");
+            var tgl = new Date();
+            var hari = tgl.getDay();
+            var tanggal = tgl.getDate();
+            var bulan = tgl.getMonth();
+            var tahun = tgl.getFullYear();
+            tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " + tahun;
+        </script>
+        
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-        <!--
-          <li class="nav-item">
-            <a href="#" class="nav-link">Schedule
-              <span class="badge badge-primary ml-1">New</span>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a href="#" class="nav-link">
-              <i class="mdi mdi-elevation-rise"></i>Reports</a>
+        
+        <?php  
+            if($_SESSION['level'] == "1"){  
+        ?>
+          <li class='nav-item active'>
+            <span class="nav-link"><h6><script language='JavaScript'>document.write(tanggallengkap);</script> | </h6><h6 id="jam"></h6></span>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
+            <a href="../add_user" class="nav-link">  
+               <i class="mdi mdi-bookmark-plus-outline"></i>Add_User</a>
           </li>
-          -->
+          <li class="nav-item">
+            <a href="../user_group" class="nav-link">
+               <i class="mdi mdi-elevation-rise"></i>User_Group</a>
+          </li>
+          
+          <?php
+          }
+          else{
+          ?>
+           <li class='nav-item active'>
+            <span class="nav-link"><h6><script language='JavaScript'>document.write(tanggallengkap);</script> | </h6><h6 id="jam"></h6></span>
+          </li>
+         <?php 
+          }
+        ?>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
         <!--

@@ -24,7 +24,7 @@ include("../koneksi.php");
             </div>
           </li>
           <?php
-            if($_SESSION['level'] == "admin"){
+            if($_SESSION['level'] == "1"){
             echo '       
           <li class="nav-item" >
             <a class="nav-link" href="../dashboard/index.php">
@@ -45,6 +45,9 @@ include("../koneksi.php");
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../dosen">Data Dosen</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../ruangan">Ruangan</a>
                 </li>
               </ul>
             </div>
@@ -73,9 +76,6 @@ include("../koneksi.php");
                   <a class="nav-link" href="../jadwal">Jadwal kuliah</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../ruangan">Ruangan</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="../krs">Kartu Rencana Studi</a>
                 </li>
                 <li class="nav-item">
@@ -86,7 +86,7 @@ include("../koneksi.php");
           </li>';
             }
           
-           else if($_SESSION['level'] == "mahasiswa"){
+           else if($_SESSION['level'] == "4"){
             echo'<li class="nav-item" >
             <a class="nav-link" href="../dashboard/index.php">
               <i class="menu-icon mdi mdi-television"></i>
@@ -111,9 +111,6 @@ include("../koneksi.php");
                   <a class="nav-link" href="../jadwal">Jadwal kuliah</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../ruangan">Ruangan</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="../krs">Kartu Rencana Studi</a>
                 </li>
                 <li class="nav-item">
@@ -124,7 +121,7 @@ include("../koneksi.php");
           </li>';
            }
           
-          else if($_SESSION['level'] == "dosen"){
+          else if($_SESSION['level'] == "3"){
            echo'<li class="nav-item" >
             <a class="nav-link" href="../dashboard/index.php">
               <i class="menu-icon mdi mdi-television"></i>
@@ -132,14 +129,20 @@ include("../koneksi.php");
             </a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="../mahasiswa">
+            <a class="nav-link" href="../daftar_mahasiswa">
               <i class="menu-icon mdi mdi-account-card-details"></i>
-              <span class="menu-title">Mahasiswa</span>
+              <span class="menu-title">Daftar Mahasiswa</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../jadwal">
+              <i class="menu-icon mdi mdi-book-open-variant"></i>
+              <span class="menu-title">Jadwal Kuliah</span>
             </a>
           </li>'; 
           }
           
-          else if($_SESSION['level'] == "prodi"){
+          else if($_SESSION['level'] == "2"){
            echo'<li class="nav-item" >
             <a class="nav-link" href="../dashboard/index.php">
               <i class="menu-icon mdi mdi-television"></i>
@@ -168,7 +171,7 @@ include("../koneksi.php");
           </li>'; 
           }
           else{
-            header("location:index.php");
+            header("location:../error-404.php");
           }
           ?>
         </ul>

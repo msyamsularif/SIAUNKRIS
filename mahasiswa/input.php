@@ -126,7 +126,7 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">PRODI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="prodi" class="form-control" />
+														<input type="text" name="prodi" class="form-control" />
                           </div>
                         </div>
                       </div>

@@ -5,6 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
+	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "2") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,11 +90,11 @@ label {
           <div class="row">
 
           <?php
-					if($_SESSION['level'] == "admin"){
-						$sql = 'SELECT nip, nama, email, no_telp, prodi, gender, matkul, status FROM data_dosen';
+					if($_SESSION['level'] == "1"){
+						$sql = 'SELECT nip, nama, email, no_telp, gender, prodi, status FROM data_dosen';
 					}
-					else if($_SESSION['level'] == "prodi"){
-						$sql = "SELECT nip, nama, email, no_telp, prodi, gender, matkul, status FROM data_dosen WHERE prodi='$_SESSION[prodi_user]'";
+					else if($_SESSION['level'] == "2"){
+						$sql = "SELECT nip, nama, email, no_telp, gender, prodi, status FROM data_dosen WHERE prodi='$_SESSION[prodi_user]'";
 					}
           $query = mysqli_query($conn, $sql);
 
@@ -108,9 +109,8 @@ label {
 							<th>Nama</th>
 							<th>E-Mail</th>
 							<th>No Telp.</th>
-							<th>Prodi</th>
 							<th>Gender</th>
-							<th>Mata Kuliah</th>
+							<th>Prodi</th>
 							<th>Status</th>
 							<th>Action</th>
 					</tr>
@@ -123,9 +123,8 @@ label {
 										echo "<td>".$row['nama']."</td>";
 										echo "<td>".$row['email']."</td>";
 										echo "<td>".$row['no_telp']."</td>";
-										echo "<td>".$row['prodi']."</td>";
 										echo "<td>".$row['gender']."</td>";
-										echo "<td>".$row['matkul']."</td>";
+										echo "<td>".$row['prodi']."</td>";
 										echo "<td>".$row['status']."</td>";
 										echo "<td align='center'><a href='form-edit.php?nip=$row[nip]'>Edit</a> | <a href='delete.php?nip=$row[nip]'>Delete</a></td></tr>";     
 										 }
@@ -133,15 +132,14 @@ label {
 						</tbody>
 						<tfoot>
 							<tr>
-									<th>NIP</th>
-									<th>Nama</th>
-									<th>E-Mail</th>
-									<th>No Telp.</th>
-									<th>Prodi</th>
-									<th>Gender</th>
-									<th>Mata Kuliah</th>
-									<th>Status</th>
-									<th>Action</th>
+								<th>NIP</th>
+								<th>Nama</th>
+								<th>E-Mail</th>
+								<th>No Telp.</th>
+								<th>Gender</th>
+								<th>Prodi</th>
+								<th>Status</th>
+								<th>Action</th>
 							</tr>
 					</tfoot>
 					</table>';
@@ -200,5 +198,10 @@ label {
   <script src="../public/js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
+<?php
+	}
+	else{
+		header("location:../error-404.php");
+	}
+?>
 </html>

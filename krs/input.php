@@ -145,8 +145,17 @@ hr{
 										if (!$query) {
 											die('SQL Error: ' . mysqli_error($conn));
 										}
-										echo '<form action="input_proses.php" method="post">';
-													
+										echo "<form action='input_proses.php' method='post'>
+													<div class='row'>
+														 <div class='col-md-6'>
+															<div class='form-group row'>
+																<div class='col-sm-9'>
+																	<input type='hidden' name='nim_krs' class='form-control' value='$_SESSION[nip_user]' />
+																	<input type='hidden' name='nama_krs' class='form-control' value='$_SESSION[nama_user]' />
+																</div>
+															</div>
+														</div>
+													</div>";
 										echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
 											<thead>
 											<tr>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2019 at 12:53 PM
+-- Generation Time: Jan 15, 2019 at 04:01 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -206,24 +206,45 @@ INSERT INTO `ruangan` (`kode_ruangan`, `nama_ruangan`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `nip_user` varchar(255) NOT NULL,
   `nama_user` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level` varchar(255) NOT NULL COMMENT '1=Admin, 2=Prodi, 3=Dosen, 4=Mahasiswa',
-  `prodi_user` char(255) NOT NULL
+  `level` int(12) NOT NULL COMMENT '1=Admin, 2=Prodi, 3=Dosen, 4=Mahasiswa',
+  `prodi_user` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `nama_user`, `username`, `password`, `level`, `prodi_user`) VALUES
-(1, 'Administrator', 'admin', 'admin', 'admin', ''),
-(2, 'Prodi Arsitek', 'prodi_arsitek', 'prodi', 'prodi', 'Arsitek'),
-(3, 'Tatang', 'dosen', 'dosen', 'dosen', 'informatika'),
-(4, 'Syam', '1770231019', 'mahasiswa', 'mahasiswa', 'informatika'),
-(6, 'Prodi Informatika', 'prodi_informatika', 'prodi', 'prodi', 'Informatika');
+INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `username`, `password`, `level`, `prodi_user`) VALUES
+(15, '1', 'Administrator', 'admin', 'admin', 1, 'Informatika'),
+(16, '1770231019', 'Syam', '1770231019', 'mahasiswa', 4, 'Informatika'),
+(19, '12345677', 'Yanto', 'dosen', 'dosen', 3, 'Informatika'),
+(20, 'KP-TIF', 'Prodi Informatika', 'prodi_informatika', 'prodi', 2, 'Informatika');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_group`
+--
+
+CREATE TABLE `user_group` (
+  `kode_user` int(12) NOT NULL,
+  `nama_usergroup` char(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_group`
+--
+
+INSERT INTO `user_group` (`kode_user`, `nama_usergroup`) VALUES
+(1, 'Admin'),
+(2, 'Prodi'),
+(3, 'Dosen'),
+(4, 'Mahasiswa');
 
 --
 -- Indexes for dumped tables
@@ -279,7 +300,19 @@ ALTER TABLE `ruangan`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD KEY `nip_user` (`nip_user`),
+  ADD KEY `nama_user` (`nama_user`),
+  ADD KEY `username` (`username`),
+  ADD KEY `password` (`password`),
+  ADD KEY `kode_prodi_user` (`prodi_user`),
+  ADD KEY `level` (`level`);
+
+--
+-- Indexes for table `user_group`
+--
+ALTER TABLE `user_group`
+  ADD PRIMARY KEY (`kode_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -289,17 +322,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `krs`
 --
 ALTER TABLE `krs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `user_group`
+--
+ALTER TABLE `user_group`
+  MODIFY `kode_user` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
