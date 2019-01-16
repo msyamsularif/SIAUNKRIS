@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2019 at 04:01 AM
+-- Generation Time: Jan 16, 2019 at 01:37 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -31,9 +31,8 @@ CREATE TABLE `data_dosen` (
   `nama` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_telp` int(50) NOT NULL,
-  `prodi` varchar(100) NOT NULL,
   `gender` varchar(50) NOT NULL,
-  `matkul` varchar(100) NOT NULL,
+  `prodi` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,10 +40,10 @@ CREATE TABLE `data_dosen` (
 -- Dumping data for table `data_dosen`
 --
 
-INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `prodi`, `gender`, `matkul`, `status`) VALUES
-('12345677', 'Yanto', 'bongolarif@yahoo.co.id', 8777, 'Arsitek', 'Laki-laki', 'Bahasa Indonesia', 'Aktif'),
-('275875664', 'M Syamsul Arif', 'example@email.com', 812555788, 'Informatika', 'Pria', 'Pemrograman Web', 'Aktif'),
-('275875665', 'Jono Sumito', 'example@email.com', 81265654, 'Informatika', 'Pria', 'Algoritma', 'Aktif');
+INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `gender`, `prodi`, `status`) VALUES
+('12345677', 'Yanto', 'bongolarif@yahoo.co.id', 8777, 'Laki-laki', 'Informatika', 'Aktif'),
+('275875664', 'Arif', 'example@email.com', 812555788, 'Pria', 'Perencanaan Wilayah & Kota', 'Aktif'),
+('275875665', 'Jono Sumito', 'example@email.com', 81265654, 'Pria', 'Informatika', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -140,18 +139,20 @@ INSERT INTO `jadwal` (`id_jadwal`, `kode_matkul_jadwal`, `nip_jadwal`, `kode_rua
 
 CREATE TABLE `krs` (
   `id` int(11) NOT NULL,
-  `kode_matkul_krs` varchar(255) NOT NULL
+  `kode_matkul_krs` varchar(255) NOT NULL,
+  `nim_krs` varchar(100) NOT NULL,
+  `nama_krs` char(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `krs`
 --
 
-INSERT INTO `krs` (`id`, `kode_matkul_krs`) VALUES
-(41, 'MK001'),
-(42, 'MK002'),
-(43, 'MK004'),
-(44, 'MK005');
+INSERT INTO `krs` (`id`, `kode_matkul_krs`, `nim_krs`, `nama_krs`) VALUES
+(58, 'MK001', '1770231019', 'M Syamsul Arif'),
+(60, 'MK004', '1770231019', 'M Syamsul Arif'),
+(61, 'MK005', '1770231019', 'M Syamsul Arif'),
+(62, 'MK002', '1770231019', 'M Syamsul Arif');
 
 -- --------------------------------------------------------
 
@@ -221,9 +222,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `username`, `password`, `level`, `prodi_user`) VALUES
 (15, '1', 'Administrator', 'admin', 'admin', 1, 'Informatika'),
-(16, '1770231019', 'Syam', '1770231019', 'mahasiswa', 4, 'Informatika'),
+(16, '1770231019', 'M Syamsul Arif', '1770231019', 'mahasiswa', 4, 'Informatika'),
 (19, '12345677', 'Yanto', 'dosen', 'dosen', 3, 'Informatika'),
-(20, 'KP-TIF', 'Prodi Informatika', 'prodi_informatika', 'prodi', 2, 'Informatika');
+(20, 'KP-TIF', 'Prodi Informatika', 'prodi_informatika', 'prodi', 2, 'Informatika'),
+(25, '275875664', 'Arif', 'syamsul', 'syamsul', 3, 'Perencanaan Wilayah & Kota');
 
 -- --------------------------------------------------------
 
@@ -327,17 +329,17 @@ ALTER TABLE `jadwal`
 -- AUTO_INCREMENT for table `krs`
 --
 ALTER TABLE `krs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `user_group`
 --
 ALTER TABLE `user_group`
-  MODIFY `kode_user` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kode_user` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
