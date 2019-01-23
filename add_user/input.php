@@ -145,7 +145,18 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">PRODI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="prodi_user" class="form-control" />
+                           <select name="prodi_user" class="form-control">
+															<?php
+																
+																$query = mysqli_query($conn, "SELECT * FROM data_prodi");
+																if($query == false){
+																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
+																}
+																while ($row = mysqli_fetch_array($query)){
+																	echo "<option value='$row[kode]'>$row[nama_prodi]</option>";
+																}
+															?>
+														</select>
                           </div>
                         </div>
                       </div>

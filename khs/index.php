@@ -5,7 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
-	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "2") {
+	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "4") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,82 +80,10 @@ label {
           </div>
           <div class="row">
 		  <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Table Dosen</h4>
-                 <h5 class="card-description">
-                <a href="input.php">Tambah data</a>
-                </h5>
-				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-          <div class="row">
-
-          <?php
-					if($_SESSION['level'] == "1"){
-						$sql = 'SELECT nip, nama, email_dosen, no_telp, gender, prodi, status_dosen, nama_prodi, kode FROM data_dosen
-										INNER JOIN data_prodi ON prodi=kode';
-					}
-					else if($_SESSION['level'] == "2"){
-						$sql = "SELECT nip, nama, email_dosen, no_telp, gender, prodi, status_dosen, nama_prodi, kode FROM data_dosen
-										INNER JOIN data_prodi ON prodi=kode WHERE prodi='$_SESSION[prodi_user]'";
-					}
-          $query = mysqli_query($conn, $sql);
-
-          if (!$query) {
-            die('SQL Error: ' . mysqli_error($conn));
-          }
-
-          echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
-					<thead>
-					<tr>
-							<th>NIP</th>
-							<th>Nama</th>
-							<th>E-Mail</th>
-							<th>No Telp.</th>
-							<th>Gender</th>
-							<th>Prodi</th>
-							<th>Status</th>
-							<th>Action</th>
-					</tr>
-					</thead>
-							<tbody>';
-										
-										while ($row = mysqli_fetch_array($query)) {
-										echo "<tr>";
-										echo "<td>".$row['nip']."</td>";
-										echo "<td>".$row['nama']."</td>";
-										echo "<td>".$row['email_dosen']."</td>";
-										echo "<td>".$row['no_telp']."</td>";
-										echo "<td>".$row['gender']."</td>";
-										echo "<td>".$row['nama_prodi']."</td>";
-										echo "<td>".$row['status_dosen']."</td>";
-										echo "<td align='center'><a href='form-edit.php?nip=$row[nip]'>Edit</a> | <a href='delete.php?nip=$row[nip]'>Delete</a></td></tr>";     
-										 }
-										echo '
-						</tbody>
-						<tfoot>
-							<tr>
-								<th>NIP</th>
-								<th>Nama</th>
-								<th>E-Mail</th>
-								<th>No Telp.</th>
-								<th>Gender</th>
-								<th>Prodi</th>
-								<th>Status</th>
-								<th>Action</th>
-							</tr>
-					</tfoot>
-					</table>';
-					
-					// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-										mysqli_free_result($query);
-					
-					// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-										mysqli_close($conn);
-										?>
-                  </div>
-                  </div>
-                </div>
-              </div>
+            <div class="card">
+                <center>
+                    <h1 style="margin: 10px 0 10px 0;">ON PROCESS...</h1>
+                </center>
             </div>
 			<!-- Data Table -->
 		  </div>

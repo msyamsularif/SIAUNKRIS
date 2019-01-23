@@ -94,8 +94,9 @@ label {
           <?php
 					if($_SESSION['level'] == "1"){
           $sql = 'SELECT id_user, nip_user, nama_user, username, password, level, prodi_user,
-									kode_user, nama_usergroup FROM users
-									INNER JOIN user_group ON kode_user=level';
+									kode_user, nama_usergroup, nama_prodi, kode FROM users
+									INNER JOIN user_group ON kode_user=level
+									INNER JOIN data_prodi ON prodi_user=kode';
 					}
 					else{
 						header('location:../error-404.php');
@@ -127,7 +128,7 @@ label {
                         echo "<td>".$row['username']."</td>";
                         echo "<td>".$row['password']."</td>";
                         echo "<td>".$row['nama_usergroup']."</td>";
-                        echo "<td>".$row['prodi_user']."</td>";    
+                        echo "<td>".$row['nama_prodi']."</td>";    
                         echo "<td align='center'><a href='form-edit.php?id_user=$row[id_user]'>Edit</a> | <a href='delete.php?id_user=$row[id_user]'>Delete</a></td></tr>";     
                       }
                       echo '

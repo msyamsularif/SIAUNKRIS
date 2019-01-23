@@ -5,6 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
+	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "4") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +44,7 @@ label {
 hr{
 	border: 2px solid black;
 }
+
 </style>
 <script>
   $(document).ready(function() {
@@ -80,14 +82,25 @@ hr{
               </span>
             </div>
           </div>
-          <div class="row">
+			<div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Table KRS</h4>
-							<h5 class="card-description">
-                <a href="input.php">Input KRS</a>
-              </h5>
+							<div class="row">
+								<div class="col-md-10">
+									<h5 class="card-description">
+										<a href="input.php">Input KRS</a>
+									</h5>
+								</div>
+								<div class="col-md-2">
+									<a href="../krs_print" target="_BLANK">
+									<button type="button" class="btn btn-outline-primary btn-fw">
+										<i class="mdi mdi-printer"></i>Print
+									</button>
+									</a>
+								</div>
+							</div>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
 <!--					<div class="row">
             <div class="col-md-6">
@@ -135,13 +148,13 @@ hr{
 								<div class="row">
 						
 										<?php
-										$sql = 'SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id, sks,
-														kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi FROM jadwal
+										$sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id, sks,
+														kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi,nama_krs FROM jadwal
 														INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
 														INNER JOIN krs ON kode_matkul_jadwal=kode_matkul_krs
 														INNER JOIN data_dosen ON nip_jadwal=nip
 														INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
-														INNER JOIN data_prodi ON kode_prodi=kode';
+														INNER JOIN data_prodi ON kode_prodi=kode WHERE nama_krs='$_SESSION[nama_user]'";
 										$query = mysqli_query($conn, $sql);
 					
 										if (!$query) {
@@ -155,40 +168,46 @@ hr{
 													<th>NO</th>
 													<th>Kode Matkul</th>
 													<th>Nama Matkul</th>
-													<th>SKS</th>
 													<th>Nama Dosen</th>
 													<th>Hari</th>
 													<th>Jam</th>
+													<th>SKS</th>
 													<th>Action</th>
 											</tr>
 											</thead>
 											<tbody>';
 											$no=1;
+											$total=0;
 											 while ($row = mysqli_fetch_array($query)) {
 																	echo "<tr>";
 																	echo "<td>".$no."</td>";
 																	echo "<td>".$row['kode_matkul_krs']."</td>";
 																	echo "<td>".$row['nama_matkul']."</td>";
-																	echo "<td>".$row['sks']."</td>";
 																	echo "<td>".$row['nama']."</td>";
 																	echo "<td>".$row['hari']."</td>";
 																	echo "<td>".$row['jam']."</td>";
+																	echo "<td>".$row['sks']."</td>";
 																	echo "<td align='center'><a href='delete.php?id=$row[id]'>Delete</a></td></tr>";
 																$no++;
+																$total += $row['sks'];
 																}
-											echo '
-												</tbody>
+											echo
+											'</tbody>
 												<tfoot>
 													<tr>
 														<th>NO</th>
 														<th>Kode Matkul</th>
 														<th>Nama Matkul</th>
-														<th>SKS</th>
 														<th>Nama Dosen</th>
 														<th>Hari</th>
 														<th>Jam</th>
+														<th>SKS</th>
 														<th>Action</th>
 													</tr>
+													<tr>
+														<td colspan="6" align="center" style="border: solid;">TOTAL SKS </td>
+														<td style="border: solid;" colspan="2">' . number_format($total, 0, ',', '.') . '</td>
+												 </tr>
 											</tfoot>
 											</table>						
 											</form>';
@@ -247,5 +266,10 @@ hr{
   <script src="../public/js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
+<?php
+	}
+	else{
+		header("location:../error-404.php");
+	}
+?>
 </html>

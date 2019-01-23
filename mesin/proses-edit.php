@@ -7,17 +7,17 @@ if (isset($_POST['edit'])) {
   // membuat variabel untuk menampung data dari form edit
     $nim = $_POST["nim"];
     $nama = $_POST["nama"];
-    $email = $_POST["email"];
+    $email = $_POST["email_mahasiswa"];
     $no_telp = $_POST["no_telp"];
-    $prodi = $_POST["prodi"];
+    $prodi = $_POST["prodi_mahasiswa"];
     $shift = $_POST["shift"];
-    $status = $_POST["status"];
+    $status = $_POST["status_mahasiswa"];
 
   //buat dan jalankan query UPDATE
   $query  = "UPDATE data_mahasiswa SET ";
   $query .= "nim = '$nim', nama = '$nama', ";
-  $query .= "email ='$email', ";
-  $query .= "no_telp = '$no_telp', prodi = '$prodi',shift = '$shift', status = '$status' ";
+  $query .= "email_mahasiswa ='$email', ";
+  $query .= "no_telp = '$no_telp', prodi_mahasiswa = '$prodi',shift = '$shift', status_mahasiswa = '$status' ";
   $query .= "WHERE nim = '$nim'";
 
   $row = mysqli_query($conn, $query);

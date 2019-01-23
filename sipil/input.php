@@ -108,7 +108,7 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">EMAIL</label>
                           <div class="col-sm-9">
-                            <input type="text" name="email" class="form-control" />
+                            <input type="text" name="email_mahasiswa" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -124,9 +124,9 @@ label {
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">PRODI</label>
+                          <label class="col-sm-3 col-form-label">KODE PRODI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="prodi" value="Sipil" readonly="" class="form-control" />
+                            <input type="text" name="prodi_mahasiswa" value="KP-TS" readonly="" class="form-control" />
                           </div>
                         </div>
                       </div>
@@ -148,14 +148,14 @@ label {
                           <div class="col-sm-4">
                             <div class="form-radio">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Aktif" checked> Aktif
+                                <input type="radio" class="form-check-input" name="status_mahasiswa" id="status" value="Aktif" checked> Aktif
                               </label>
                             </div>
                           </div>
                           <div class="col-sm-5">
                             <div class="form-radio">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Non Active"> Non Active
+                                <input type="radio" class="form-check-input" name="status_mahasiswa" id="status" value="Non Active"> Non Active
                               </label>
                             </div>
                           </div>

@@ -169,7 +169,28 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">PRODI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="prodi_user" class="form-control" value="<?php echo $row['prodi_user']; ?>"/>
+                            <select name="prodi_user" class="form-control">
+                            <?php
+                              $query = mysqli_query($conn,"SELECT prodi_user, kode, nama_prodi FROM users INNER JOIN data_prodi ON prodi_user=kode WHERE id_user='$id_user'");
+                              if ($query == false){
+                                die ("Terdapat Kesalahan : ". mysqli_error($conn));
+                              }
+                              while ($rows = mysqli_fetch_array($query)){
+                                echo "<option value='$rows[prodi_user]' selected>$rows[nama_prodi]</option>";
+                              }
+                              
+                              $query = mysqli_query($conn, "SELECT * FROM data_prodi");
+                              if($query == false){
+                                die("Terdapat Kesalahan : ". mysqli_error($conn));
+                              }
+                              while($row1 = mysqli_fetch_array($query)){
+                                if($row1["kode"] != $row["prodi_user"])
+                                {
+                                  echo "<option value='$row1[kode]'>$row1[nama_prodi]</option>";
+                                }
+                              }
+                            ?>
+                            </select>
                           </div>
                         </div>
                       </div>

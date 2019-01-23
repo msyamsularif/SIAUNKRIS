@@ -8,11 +8,11 @@ if(isset($_POST['input'])){
     // ambil data dari formulir
     $nim = $_POST["nim"];
     $nama = $_POST["nama"];
-    $email = $_POST["email"];
+    $email = $_POST["email_mahasiswa"];
     $no_telp = $_POST["no_telp"];
-    $prodi = $_POST["prodi"];
+    $prodi = $_POST["prodi_mahasiswa"];
     $shift = $_POST["shift"];
-    $status = $_POST["status"];
+    $status = $_POST["status_mahasiswa"];
 
     // buat query
     $query = "INSERT INTO data_mahasiswa VALUE ('$nim', '$nama', '$email', '$no_telp', '$prodi', '$shift', '$status')";

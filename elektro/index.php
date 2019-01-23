@@ -104,7 +104,8 @@ label {
           <div class="row">
 
           <?php
-          $sql = 'SELECT nim, nama, email, no_telp, prodi, shift, status FROM data_mahasiswa WHERE prodi = "elektro"';
+          $sql = 'SELECT nim, nama, email_mahasiswa, no_telp, prodi_mahasiswa, shift, status_mahasiswa, nama_prodi, kode FROM data_mahasiswa
+									INNER JOIN data_prodi ON prodi_mahasiswa=kode WHERE prodi_mahasiswa = "KP-TE"';
 
           $query = mysqli_query($conn, $sql);
 
@@ -131,11 +132,11 @@ label {
                         echo "<tr>";
                         echo "<td>".$row['nim']."</td>";
                         echo "<td>".$row['nama']."</td>";
-                        echo "<td>".$row['email']."</td>";
+                        echo "<td>".$row['email_mahasiswa']."</td>";
                         echo "<td>".$row['no_telp']."</td>";
-                        echo "<td>".$row['prodi']."</td>";
+                        echo "<td>".$row['nama_prodi']."</td>";
                         echo "<td>".$row['shift']."</td>";
-                        echo "<td>".$row['status']."</td>";
+                        echo "<td>".$row['status_mahasiswa']."</td>";
                         echo "<td align='center'><a href='form-edit.php?nim=$row[nim]'>Edit</a> | <a href='delete.php?nim=$row[nim]'>Delete</a></td></tr>";
                       }
               echo '

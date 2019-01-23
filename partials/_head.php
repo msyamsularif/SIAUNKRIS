@@ -14,5 +14,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- END::META TAG -->
 	<!-- BEGIN::FAVICON -->
-<link rel="shortcut icon" href="../public/images/unkris.png" />
+<link rel="shortcut icon" href="../public/images/Teknik.png" />
 <!-- END::FAVICON -->

@@ -26,11 +26,11 @@
     $row = mysqli_fetch_assoc($row);
     $nim = $row["nim"];
     $nama = $row["nama"];
-    $email = $row["email"];
+    $email = $row["email_mahasiswa"];
     $no_telp = $row["no_telp"];
-    $prodi = $row["prodi"];
+    $prodi = $row["prodi_mahasiswa"];
     $shift = $row["shift"];
-    $status = $row["status"];
+    $status = $row["status_mahasiswa"];
   } else {
     // apabila tidak ada data GET id pada akan di redirect ke index.php
     header("location:index.php");
@@ -139,7 +139,7 @@ label {
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">EMAIL</label>
                           <div class="col-sm-9">
-                            <input type="text" name="email" class="form-control" value="<?php echo $email; ?>"/>
+                            <input type="text" name="email_mahasiswa" class="form-control" value="<?php echo $email; ?>"/>
                           </div>
                         </div>
                       </div>
@@ -155,9 +155,9 @@ label {
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">PRODI</label>
+                          <label class="col-sm-3 col-form-label">KODE PRODI</label>
                           <div class="col-sm-9">
-                            <input type="text" name="prodi" class="form-control" value="<?php echo $prodi; ?>" readonly="">
+                            <input type="text" name="prodi_mahasiswa" class="form-control" value="<?php echo $prodi; ?>" readonly="">
                           </div>
                         </div>
                       </div>
@@ -176,18 +176,18 @@ label {
                       <div class="col-md-10">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">STATUS</label>
-                          <?php $status = $row['status']; ?>
+                          <?php $status = $row['status_mahasiswa']; ?>
                           <div class="col-sm-4">
                             <div class="form-radio">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Aktif" <?php echo ($status == 'Aktif') ? "checked": "" ?>> Aktif
+                                <input type="radio" class="form-check-input" name="status_mahasiswa" id="status" value="Aktif" <?php echo ($status == 'Aktif') ? "checked": "" ?>> Aktif
                               </label>
                             </div>
                           </div>
                           <div class="col-sm-5">
                             <div class="form-radio">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="status" id="status" value="Non Active" <?php echo ($status == 'Non Active') ? "checked": "" ?>> Non Active
+                                <input type="radio" class="form-check-input" name="status_mahasiswa" id="status" value="Non Active" <?php echo ($status == 'Non Active') ? "checked": "" ?>> Non Active
                               </label>
                             </div>
                           </div>

@@ -79,7 +79,7 @@ include("../koneksi.php");
                   <a class="nav-link" href="../krs">Kartu Rencana Studi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Kartu Hasil Studi</a>
+                  <a class="nav-link" href="../khs">Kartu Hasil Studi</a>
                 </li>
               </ul>
             </div>
@@ -114,7 +114,7 @@ include("../koneksi.php");
                   <a class="nav-link" href="../krs">Kartu Rencana Studi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Kartu Hasil Studi</a>
+                  <a class="nav-link" href="../khs">Kartu Hasil Studi</a>
                 </li>
               </ul>
             </div>
