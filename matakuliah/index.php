@@ -5,6 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
+	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "4") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +84,14 @@ label {
             <div class="card-body">
               <h4 class="card-title">Table Matakuliah</h4>
               <h5 class="card-description">
-                <a href="input.php">Tambah data</a>
+                <?php
+									if($_SESSION['level'] == "4"){
+									
+									}
+									else if ($_SESSION['level'] == "1"){
+										echo '<a href="input.php">Tambah data</a>';
+									}
+								?>
               </h5>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
@@ -101,8 +109,14 @@ label {
             <tr>
                 <th>Kode Matkul</th>
                 <th>Nama Matkul</th>
-                <th>SKS</th>
-								<th>Action</th>
+                <th>SKS</th>';
+								if($_SESSION['level'] == "4"){
+										
+								}
+								else if ($_SESSION['level'] == "1"){
+									echo '<th>Action</th>';
+								}
+						echo'		
             </tr>
             </thead>
                 <tbody>';
@@ -111,17 +125,28 @@ label {
                         echo "<tr>";
                         echo "<td>".$row['kode_matkul']."</td>";
                         echo "<td>".$row['nama_matkul']."</td>";
-                        echo "<td>".$row['sks']."</td>";    
-                        echo "<td align='center'><a href='form-edit.php?kode_matkul=$row[kode_matkul]'>Edit</a> | <a href='delete.php?kode_matkul=$row[kode_matkul]'>Delete</a></td></tr>";     
+                        echo "<td>".$row['sks']."</td>";
+												if($_SESSION['level'] == "4"){
+										
+												}
+												else if ($_SESSION['level'] == "1"){
+													echo "<td align='center'><a href='form-edit.php?kode_matkul=$row[kode_matkul]'>Edit</a> | <a href='delete.php?kode_matkul=$row[kode_matkul]'>Delete</a></td></tr>";
+												}      
                       }
                       echo '
               </tbody>
               <tfoot>
                 <tr>
-                <th>Kode Matkul</th>
-                <th>Nama Matkul</th>
-                <th>SKS</th>
-								<th>Action</th>
+									<th>Kode Matkul</th>
+									<th>Nama Matkul</th>
+									<th>SKS</th>';
+									if($_SESSION['level'] == "4"){
+										
+									}
+									else if ($_SESSION['level'] == "1"){
+										echo '<th>Action</th>';
+									}
+						echo'
                 </tr>
             </tfoot>
             </table>';
@@ -180,5 +205,10 @@ label {
   <script src="../public/js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
+<?php
+	}
+	else{
+		header("location:../error-404.php");
+	}
+?>
 </html>

@@ -120,12 +120,23 @@ label {
                           <div class="col-sm-9">
                             <select name="nip_jadwal" class="form-control">
 														<?php
-															$query = mysqli_query($conn, "SELECT * FROM data_dosen");
-															if ($query == false){
-																die ("Terdapat Kesalahan : ". mysqli_error($conn));
+															if ($_SESSION['level'] == "1" || $_SESSION['level'] == "3" || $_SESSION['level'] == "4") {
+																$query = mysqli_query($conn, "SELECT * FROM data_dosen");
+																if ($query == false){
+																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
+																}
+																while ($row = mysqli_fetch_array($query)){
+																	echo "<option value='$row[nip]'>$row[nama]</option>";
+																}
 															}
-															while ($row = mysqli_fetch_array($query)){
-																echo "<option value='$row[nip]'>$row[nama]</option>";
+															else if($_SESSION['level'] == "2"){
+																$query = mysqli_query($conn, "SELECT * FROM data_dosen  WHERE prodi='$_SESSION[prodi_user]'");
+																if ($query == false){
+																	die ("Terdapat Kesalahan : ". mysqli_error($conn));
+																}
+																while ($row = mysqli_fetch_array($query)){
+																	echo "<option value='$row[nip]'>$row[nama]</option>";
+																}
 															}
 														?>
 														</select>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2019 at 01:37 PM
+-- Generation Time: Jan 24, 2019 at 03:18 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -29,21 +29,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `data_dosen` (
   `nip` varchar(255) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email_dosen` varchar(50) NOT NULL,
   `no_telp` int(50) NOT NULL,
   `gender` varchar(50) NOT NULL,
   `prodi` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `status_dosen` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_dosen`
 --
 
-INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `gender`, `prodi`, `status`) VALUES
-('12345677', 'Yanto', 'bongolarif@yahoo.co.id', 8777, 'Laki-laki', 'Informatika', 'Aktif'),
-('275875664', 'Arif', 'example@email.com', 812555788, 'Pria', 'Perencanaan Wilayah & Kota', 'Aktif'),
-('275875665', 'Jono Sumito', 'example@email.com', 81265654, 'Pria', 'Informatika', 'Aktif');
+INSERT INTO `data_dosen` (`nip`, `nama`, `email_dosen`, `no_telp`, `gender`, `prodi`, `status_dosen`) VALUES
+('12345677', 'Yanto', 'example@email.com', 8777, 'Laki-laki', 'KP-TIF', 'Aktif'),
+('275875664', 'Arif', 'example@email.com', 812555788, 'Pria', 'KP-TP', 'Aktif'),
+('275875665', 'Jono Sumito', 'example@email.com', 81265654, 'Pria', 'KP-TIF', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -54,28 +54,28 @@ INSERT INTO `data_dosen` (`nip`, `nama`, `email`, `no_telp`, `gender`, `prodi`, 
 CREATE TABLE `data_mahasiswa` (
   `nim` int(50) NOT NULL,
   `nama` char(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email_mahasiswa` varchar(50) NOT NULL,
   `no_telp` int(50) NOT NULL,
-  `prodi` varchar(100) NOT NULL,
+  `prodi_mahasiswa` varchar(255) NOT NULL,
   `shift` varchar(100) NOT NULL,
-  `status` varchar(50) NOT NULL
+  `status_mahasiswa` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_mahasiswa`
 --
 
-INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email`, `no_telp`, `prodi`, `shift`, `status`) VALUES
-(5555, 'Nani Surnani', 'bongolarif@yahoo.co.id', 8777, 'Sipil', 'Reguler', 'Aktif'),
-(5638, 'Joko Minto', 'bongolarif@yahoo.co.id', 8888, 'Elektro', 'Reguler', 'Aktif'),
-(7896, 'Yaya', 'bongolarif@yahoo.co.id', 8777, 'Perencanaan Wilayah & Kota', 'Reguler', 'Aktif'),
-(23456, 'Arah langkah', 'budi', 899, 'mesin', 'Reguler', 'Aktif'),
-(67890, 'Ari', 'bongolarif@yahoo.co.id', 8888, 'Industri', 'Reguler', 'Aktif'),
-(123456, 'Embrem Cekum', 'bongolarif@yahoo.co.id', 8777, 'Arsitek', 'Reguler', 'Aktif'),
-(1770231015, 'Jono embrem', 'bongolarif@yahoo.co.id', 8777, 'Arsitek', 'Reguler', 'Aktif'),
-(1770231019, 'Syamsul', 'example@email.com', 76665547, 'Informatika', 'Reguler', 'Aktif'),
-(1770231050, 'Willy Adinata Saragih', 'willy.adinata@gmail.com', 628165744, 'Informatika', 'Reguler', 'Aktif'),
-(1770231052, 'Rommy Andiansyah', 'example@email.com', 667546545, 'Informatika', 'Reguler', 'Aktif');
+INSERT INTO `data_mahasiswa` (`nim`, `nama`, `email_mahasiswa`, `no_telp`, `prodi_mahasiswa`, `shift`, `status_mahasiswa`) VALUES
+(5555, 'Nani', 'example@gmail.com', 8777, 'KP-TS', 'Reguler', 'Aktif'),
+(5638, 'Joko Minto', 'example@gmail.com', 8888, 'KP-TE', 'Reguler', 'Aktif'),
+(7896, 'Yaya', 'example@gmail.com', 8777, 'KP-TP', 'Reguler', 'Aktif'),
+(23456, 'Arah langkah', 'example@gmail.com', 899, 'KP-TM', 'Reguler', 'Aktif'),
+(67890, 'Ari', 'example@gmail.com', 8888, 'KP-TI', 'Reguler', 'Aktif'),
+(123456, 'Yanto', 'example@gmail.com', 8888, 'KP-TIF', 'Reguler', 'Non Active'),
+(1770231015, 'Jono embrem', 'example@gmail.com', 8777, 'KP-TA', 'Reguler', 'Aktif'),
+(1770231019, 'M Syamsul Arif', 'example@gmail.com', 76665547, 'KP-TIF', 'Reguler', 'Aktif'),
+(1770231020, 'Rommy Andiansyah', 'example@gmail.com', 667546545, 'KP-TIF', 'Reguler', 'Aktif'),
+(1770231050, 'willy Adinata Saragih', 'example@gmail.com', 628165744, 'KP-TIF', 'Reguler', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -221,11 +221,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `username`, `password`, `level`, `prodi_user`) VALUES
-(15, '1', 'Administrator', 'admin', 'admin', 1, 'Informatika'),
-(16, '1770231019', 'M Syamsul Arif', '1770231019', 'mahasiswa', 4, 'Informatika'),
-(19, '12345677', 'Yanto', 'dosen', 'dosen', 3, 'Informatika'),
-(20, 'KP-TIF', 'Prodi Informatika', 'prodi_informatika', 'prodi', 2, 'Informatika'),
-(25, '275875664', 'Arif', 'syamsul', 'syamsul', 3, 'Perencanaan Wilayah & Kota');
+(27, '1', 'Administrator', 'admin', 'admin', 1, 'KP-TIF'),
+(28, '1770231019', 'M Syamsul Arif', '1770231019', 'mahasiswa', 4, 'KP-TIF'),
+(29, '12345677', 'Yanto', 'dosen', 'dosen', 3, 'KP-TIF'),
+(30, 'KP-TIF', 'Prodi Informatika', 'prodi_informatika', 'prodi', 2, 'KP-TIF'),
+(31, '275875664', 'Arif', 'syamsul', 'syamsul', 3, 'KP-TP');
 
 -- --------------------------------------------------------
 
@@ -324,7 +324,7 @@ ALTER TABLE `user_group`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `krs`
 --
@@ -334,12 +334,12 @@ ALTER TABLE `krs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `user_group`
 --
 ALTER TABLE `user_group`
-  MODIFY `kode_user` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `kode_user` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

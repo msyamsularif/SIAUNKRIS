@@ -90,7 +90,7 @@ hr{
 							<div class="row">
 								<div class="col-md-10">
 									<h5 class="card-description">
-										<a href="input.php">Input KRS</a>
+										<a href="input.php">Ambil KRS</a>
 									</h5>
 								</div>
 								<div class="col-md-2">

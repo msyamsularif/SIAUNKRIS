@@ -168,6 +168,12 @@ include("../koneksi.php");
               <i class="menu-icon mdi mdi-account-card-details"></i>
               <span class="menu-title">Mahasiswa</span>
             </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../jadwal">
+              <i class="menu-icon mdi mdi-book-open-variant"></i>
+              <span class="menu-title">Jadwal Kuliah</span>
+            </a>
           </li>'; 
           }
           else{
