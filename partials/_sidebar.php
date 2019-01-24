@@ -12,7 +12,16 @@ include("../koneksi.php");
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['nama_user'];?></p>
                   <div>
-                    <small class="designation text-muted"><?php echo $_SESSION['level'];?></small>
+                  <?php
+                  $leveluser = $_SESSION["level"];
+                  $level = array(
+						'1' => 'Admin',
+                                    '2' => 'Prodi',
+                                    '3' => 'Dosen',
+                                    '4' => 'Mahasiswa',
+                                    );
+                  ?>
+                    <small class="designation text-muted"><?php echo $level[$leveluser];?></small>
                     <span class="status-indicator online"></span>
                   </div>
 
