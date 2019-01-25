@@ -84,14 +84,14 @@ label {
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Table Jadwal Kuliah</h4>
+              <h4 style="font-size: 20px" class="card-title">Table Jadwal Kuliah</h4>
               <h5 class="card-description">
 								<?php
 								if($_SESSION['level'] == "3"|| $_SESSION['level'] == "4"){
                 
 								}
 								else if ($_SESSION['level'] == "1"|| $_SESSION['level'] == "2"){
-									echo '<a href="input.php">Tambah data</a>';
+									echo '<button type="button" class="btn btn-primary"><a style="color:white" href="input.php">Tambah data</a></button>';
 								}
 								?>
               </h5>

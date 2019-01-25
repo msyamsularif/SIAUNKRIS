@@ -88,11 +88,11 @@ hr{
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Table KRS</h4>
+              <h4 style="font-size: 20px" class="card-title">Table KRS</h4>
 							<div class="row">
 								<div class="col-md-10">
 									<h5 class="card-description">
-										<a href="input.php">Ambil KRS</a>
+                  <button type="button" class="btn btn-primary"><a style="color:white" href="input.php">Ambil KRS</a></button>
 									</h5>
 								</div>
 								<div class="col-md-2">

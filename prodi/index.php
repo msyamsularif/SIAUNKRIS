@@ -83,9 +83,9 @@ label {
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Table Prodi</h4>
+              <h1 style="font-size: 20px" class="card-title">Program Studi</h1>
               <h5 class="card-description">
-                <a href="input.php">Tambah data</a>
+              <button type="button" class="btn btn-primary"><a href="input.php" style="color:white">Tambah data</a></button>
               </h5>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">

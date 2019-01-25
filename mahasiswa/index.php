@@ -84,9 +84,9 @@ label {
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Table Mahasiswa</h4>
+              <h4 style="font-size: 20px" class="card-title">Data Mahasiswa</h4>
               <h5 class="card-description">
-                <a href="input.php">Tambah data</a>
+              <button type="button" class="btn btn-primary"><a style="color:white" href="input.php">Tambah data</a></button>
               </h5>
 							<?php
 							if($_SESSION['level'] == "1"){
