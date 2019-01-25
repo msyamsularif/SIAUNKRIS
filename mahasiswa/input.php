@@ -69,6 +69,7 @@ label {
         <div class="content-wrapper">
           <div class="row purchace-popup">
             <div class="col-12">
+            <!--
               <span class="d-block d-md-flex align-items-center">
                 <p>Like what you see? Check out our premium version for more.<a href="../sistem/logout.php">LOGOUT</a></p>
                 <a class="btn ml-auto download-button d-none d-md-block" href="https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank">Download Free Version</a>
@@ -76,6 +77,7 @@ label {
                 <i class="mdi mdi-close popup-dismiss d-none d-md-block"></i>
               </span>
             </div>
+            -->
           </div>
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
