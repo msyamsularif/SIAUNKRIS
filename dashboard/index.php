@@ -43,7 +43,6 @@
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
-                <a href="../mahasiswa">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-school text-danger icon-lg"></i>
@@ -68,13 +67,11 @@
                     <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Mahasiswa
                   </p>
                 </div>
-                </a>
               </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
-                <a href="../dosen">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi  mdi-account-location text-warning icon-lg"></i>
@@ -99,13 +96,11 @@
                     <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Dosen
                   </p>
                 </div>
-                </a>
               </div>
             </div>
 						<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
-                <a href="../matakuliah">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-library-books text-success icon-lg"></i>
@@ -130,13 +125,11 @@
                     <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Matkul
                   </p>
                 </div>
-                </a>
               </div>
             </div>
 						<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
-                <a href="../ruangan">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-book text-info icon-lg"></i>
@@ -161,7 +154,6 @@
                     <i class="mdi mdi-bookmark mr-1" aria-hidden="true"></i> Data Ruangan
                   </p>
                 </div>
-                </a>
               </div>
             </div>				
           </div>

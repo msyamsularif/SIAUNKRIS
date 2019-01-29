@@ -84,7 +84,7 @@ label {
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 style="font-size: 20px" class="card-title">Table Jadwal Kuliah</h4>
+              <h4 style="font-size: 20px" class="card-title">Table Jadwal Ujian</h4>
               <h5 class="card-description">
 								<?php
 								if($_SESSION['level'] == "3"|| $_SESSION['level'] == "4"){
@@ -100,38 +100,39 @@ label {
 
           <?php
 					if($_SESSION['level'] == "1"){
-          $sql = 'SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
-									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi FROM jadwal
-									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
-									INNER JOIN data_dosen ON nip_jadwal=nip
-									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
-									INNER JOIN data_prodi ON kode_prodi=kode';
+          $sql = 'SELECT nip, nama, nama_matkul, nama_ruangan, tanggal_ujian, jam_ujian, id_jadwal_ujian FROM jadwal_ujian
+									INNER JOIN mata_kuliah ON kode_matkul_ujian=kode_matkul
+									INNER JOIN data_dosen ON nip_ujian=nip
+									INNER JOIN ruangan ON kode_ruangan_ujian=kode_ruangan';
 					}
 					else if($_SESSION['level'] == "2"){
           $sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
-									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nip_user FROM jadwal
+									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nip_user, jam_ujian, tanggal_ujian, id_jadwal_ujian FROM jadwal
 									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
 									INNER JOIN data_dosen ON nip_jadwal=nip
 									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
 									INNER JOIN data_prodi ON kode_prodi=kode
+									INNER JOIN jadwal_ujian ON kode_matkul_jadwal=kode_matkul_ujian 
 									INNER JOIN users ON nip_jadwal=nip_user WHERE kode_prodi='$_SESSION[prodi_user]'";
 					}
 					else if($_SESSION['level'] == "3"){
           $sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
-									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nip_user FROM jadwal
+									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nip_user, jam_ujian, tanggal_ujian, id_jadwal_ujian FROM jadwal
 									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
 									INNER JOIN data_dosen ON nip_jadwal=nip
 									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
 									INNER JOIN data_prodi ON kode_prodi=kode
+									INNER JOIN jadwal_ujian ON kode_matkul_jadwal=kode_matkul_ujian 
 									INNER JOIN users ON nip_jadwal=nip_user WHERE nip_jadwal='$_SESSION[nip_user]'";
 					}
 					else if($_SESSION['level'] == "4"){
           $sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, 
-									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi FROM jadwal
+									kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, jam_ujian, tanggal_ujian, id_jadwal_ujian FROM jadwal
 									INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
 									INNER JOIN data_dosen ON nip_jadwal=nip
 									INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
-									INNER JOIN data_prodi ON kode_prodi=kode";
+									INNER JOIN data_prodi ON kode_prodi=kode
+									INNER JOIN jadwal_ujian ON kode_matkul_jadwal=kode_matkul_ujian ";
 					}
 				  $query = mysqli_query($conn, $sql);
 
@@ -145,13 +146,12 @@ label {
                 <th>Nama Matkul</th>
                 <th>Nama Dosen</th>
                 <th>Ruangan</th>
-                <th>Jurusan</th>
-                <th>Hari</th>
+                <th>Date</th>
                 <th>Jam</th>';
 								if($_SESSION['level'] == "4"){
 										
 								}
-								else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "2"){
+								else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "2" || $_SESSION['level'] == "3"){
 									echo '<th>Action</th>';
 								}
             echo '</tr>
@@ -163,14 +163,12 @@ label {
                         echo "<td>".$row['nama_matkul']."</td>";
                         echo "<td>".$row['nama']."</td>";
                         echo "<td>".$row['nama_ruangan']."</td>";
-                        echo "<td>".$row['nama_prodi']."</td>";
-                        echo "<td>".$row['hari']."</td>";
-                        echo "<td>".$row['jam']."</td>";
+                        echo "<td>".$row['tanggal_ujian']."</td>";
+                        echo "<td>".$row['jam_ujian']."</td>";
 												if($_SESSION['level'] == "3"){
-									
 												}
 												else if ($_SESSION['level'] == "1"|| $_SESSION['level'] == "2"){
-													echo "<td align='center'><a href='form-edit.php?id_jadwal=$row[id_jadwal]'>Edit</a> | <a href='delete.php?id_jadwal=$row[id_jadwal]'>Delete</a></td></tr>";
+													echo "<td align='center'><a href='form-edit.php?id_jadwal_ujian=$row[id_jadwal_ujian]'>Edit</a> | <a href='delete.php?id_jadwal_ujian=$row[id_jadwal_ujian]'>Delete</a></td></tr>";
 												}
 												else if($_SESSION['level'] == "4"){
 													
@@ -183,13 +181,12 @@ label {
 								<th>Nama Matkul</th>
                 <th>Nama Dosen</th>
                 <th>Ruangan</th>
-                <th>Jurusan</th>
-                <th>Hari</th>
+                <th>Date</th>
                 <th>Jam</th>';
 								if($_SESSION['level'] == "4"){
 										
 								}
-								else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "2"){
+								else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "2" || $_SESSION['level'] == "3"){
 									echo '<th>Action</th>';
 								}
             echo'</tr>

@@ -85,13 +85,22 @@ include("../koneksi.php");
                   <a class="nav-link" href="../jadwal">Jadwal kuliah</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="../jadwal_ujian">Jadwal Ujian</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="../krs">Kartu Rencana Studi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../khs">Kartu Hasil Studi</a>
+                  <a class="nav-link" href="../khs" target="_BLANK">Kartu Hasil Studi</a>
                 </li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../nilai">
+              <i class="menu-icon mdi mdi-border-color"></i>
+              <span class="menu-title">Nilai</span>
+            </a>
           </li>';
             }
           
@@ -114,16 +123,19 @@ include("../koneksi.php");
                   <a class="nav-link" href="#">Tahun Akademik</a>
                 </li>-->
                 <li class="nav-item">
-                  <a class="nav-link" href="../matakuliah">Mata Kuliah</a>
+                  <a class="nav-link" href="../jadwal">Jadwal kuliah</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../jadwal">Jadwal kuliah</a>
+                  <a class="nav-link" href="../jadwal_ujian">Jadwal Ujian</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../krs">Kartu Rencana Studi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../khs">Kartu Hasil Studi</a>
+                  <a class="nav-link" href="../khs" target="_BLANK">Kartu Hasil Studi</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../nilai_mahasiswa">Nilai</a>
                 </li>
               </ul>
             </div>
@@ -137,6 +149,12 @@ include("../koneksi.php");
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../nilai">
+              <i class="menu-icon mdi mdi-border-color"></i>
+              <span class="menu-title">Nilai</span>
+            </a>
+          </li>
            <li class="nav-item">
             <a class="nav-link" href="../daftar_mahasiswa">
               <i class="menu-icon mdi mdi-account-card-details"></i>
@@ -147,6 +165,12 @@ include("../koneksi.php");
             <a class="nav-link" href="../jadwal">
               <i class="menu-icon mdi mdi-book-open-variant"></i>
               <span class="menu-title">Jadwal Kuliah</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../jadwal_ujian">
+              <i class="menu-icon mdi mdi-book-open-variant"></i>
+              <span class="menu-title">Jadwal Ujian</span>
             </a>
           </li>'; 
           }
@@ -182,6 +206,12 @@ include("../koneksi.php");
             <a class="nav-link" href="../jadwal">
               <i class="menu-icon mdi mdi-book-open-variant"></i>
               <span class="menu-title">Jadwal Kuliah</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../jadwal_ujian">
+              <i class="menu-icon mdi mdi-book-open-variant"></i>
+              <span class="menu-title">Jadwal Ujian</span>
             </a>
           </li>'; 
           }

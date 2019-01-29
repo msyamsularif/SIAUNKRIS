@@ -5,7 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
-	else if ($_SESSION['level'] == "3" || $_SESSION['level'] == "1") {
+	else if ($_SESSION['level'] == "3" || $_SESSION['level'] == "1" || $_SESSION['level'] == "4") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,52 +72,80 @@ label {
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Table Data Mahasiswa</h4>
+              <h4 class="card-title">Input Data Mahasiswa</h4>
 							<div class="alert alert-danger container">
-                <strong>Catetan! </strong><p>Data Mahasiswa Keseluhuran</p> 
-              </div>
+                <strong>Catetan! </strong><p>penambahan data hanya bisa dilakukan satu kali saat pengisian nilai, pastikan data yang di input sudah benar</p>
+              </div
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
           <?php
-					$sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id, sks,
-														kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nama_krs FROM jadwal
-														INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
-														INNER JOIN krs ON kode_matkul_jadwal=kode_matkul_krs
-														INNER JOIN data_dosen ON nip_jadwal=nip
-														INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
-														INNER JOIN data_prodi ON kode_prodi=kode
-														INNER JOIN users ON nip_jadwal=nip_user
-														WHERE nip_jadwal='$_SESSION[nip_user]'";
+					if ($_SESSION['level'] == "3"){
+						$sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id, sks,
+															kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nama_krs,nim_krs FROM jadwal
+															INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
+															INNER JOIN krs ON kode_matkul_jadwal=kode_matkul_krs
+															INNER JOIN data_dosen ON nip_jadwal=nip
+															INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
+															INNER JOIN data_prodi ON kode_prodi=kode
+															INNER JOIN users ON nip_jadwal=nip_user
+															WHERE nip_jadwal='$_SESSION[nip_user]'";
+					}
+					else if ($_SESSION['level'] == "1"){
+						$sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id, sks,
+															kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nama_krs,nim_krs FROM jadwal
+															INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
+															INNER JOIN krs ON kode_matkul_jadwal=kode_matkul_krs
+															INNER JOIN data_dosen ON nip_jadwal=nip
+															INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
+															INNER JOIN data_prodi ON kode_prodi=kode
+															INNER JOIN users ON nip_jadwal=nip_user";
+					}
 					$query = mysqli_query($conn, $sql);
-          if (!$query) {
-            die('SQL Error: ' . mysqli_error($conn));
-          }
+						if (!$query) {
+							die('SQL Error: ' . mysqli_error($conn));
+						}
+					echo'<form action="input_proses.php" method="post" class="table table-striped table-bordered table-responsive">';
           echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
             <thead>
             <tr>
-                <th>NO</th>
-								<th>Kode Matkul</th>
-								<th>Nama Mahasiswa</th>
-								<th>Nama Matkul</th>
-								<th>SKS</th>
-								<th>Nama Dosen</th>
-								<th>Hari</th>
-								<th>Jam</th>
+                <th rowspan="2">NO</th>
+								<th rowspan="2">Kode Matkul</th>
+								<th rowspan="2">Nama Mahasiswa</th>
+								<th rowspan="2">Nama Matkul</th>
+								<th rowspan="2">SKS</th>
+								<th colspan="3" class="text-center">Nilai</th>
+								<th rowspan="2">Action</th>
             </tr>
+						<tr>
+							<th class="text-center">UTS</th>
+							<th class="text-center">UAS</th>
+							<th class="text-center">TUGAS</th>
+						</tr>
             </thead>
                 <tbody>';
 									 $no=1;
 											 while ($row = mysqli_fetch_array($query)) {
 													echo "<tr>";
 													echo "<td>".$no."</td>";
-													echo "<td>".$row['kode_matkul_krs']."</td>";
-													echo "<td>".$row['nama_krs']."</td>";
+													echo "<td>";?>
+																<input type="text" name="kode_matkul_nilai" readonly="" class="form-control" value="<?php echo $row['kode_matkul_krs']; ?>"/>
+																</td>
+													<td>
+														<input type="text" readonly="" class="form-control" value="<?php echo $row['nama_krs']; ?>"/>
+														<input type="text" name="nim_nilai" readonly="" class="form-control" value="<?php echo $row['nim_krs']; ?>"/>
+													</td>
+													<?php
 													echo "<td>".$row['nama_matkul']."</td>";
 													echo "<td>".$row['sks']."</td>";
-													echo "<td>".$row['nama']."</td>";
-													echo "<td>".$row['hari']."</td>";
-													echo "<td>".$row['jam']."</td>";
+													echo "<td>";?>
+																	<input type="text" name="uts"/></td>
+																</td>
+													
+													<td><input type="text" name="uas"/></td>
+													<td><input type="text" name="tugas"/></td></td>
+													<?php
+													echo "<td align='center'><input type='submit' class='btn btn-success btn-rounded btn-fw' name='input' value='Input'></a></td></tr>";
 												$no++;
 												}
               echo '
@@ -129,19 +157,18 @@ label {
 									<th>Nama Mahasiswa</th>
 									<th>Nama Matkul</th>
 									<th>SKS</th>
-									<th>Nama Dosen</th>
-									<th>Hari</th>
-									<th>Jam</th>
+									<th colspan="3" class="text-center">Nilai</th>
+									<th>Action</th>
                 </tr>
             </tfoot>
-            </table>';
-									// Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-									mysqli_free_result($query);
-			
-									// Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-									mysqli_close($conn);
-									?>
-                  </div>
+            </table>
+					</form>';
+	          // Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
+            mysqli_free_result($query);
+
+            // Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
+            mysqli_close($conn);
+            ?>
                   </div>
                 </div>
               </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2019 at 03:18 PM
+-- Generation Time: Jan 29, 2019 at 07:36 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -126,10 +126,33 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `kode_matkul_jadwal`, `nip_jadwal`, `kode_ruangan_jadwal`, `kode_prodi`, `hari`, `jam`) VALUES
-(27, 'MK001', '275875664', 'R001', 'KP-TP', 'Rabu', '12.30 - 12.40'),
-(28, 'MK004', '275875665', 'R003', 'KP-TIF', 'Kamis', '10.00-11.00'),
 (29, 'MK005', '275875664', 'R001', 'KP-TP', 'Sabtu', '12.30 - 12.40'),
-(30, 'MK002', '12345677', 'R003', 'KP-TIF', 'Kamis', '12.30 - 12.40');
+(30, 'MK002', '12345677', 'R003', 'KP-TIF', 'Kamis', '12.30 - 12.40'),
+(32, 'MK006', '275875665', 'R001', 'KP-TA', 'Senin', '12.30  - 12.41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jadwal_ujian`
+--
+
+CREATE TABLE `jadwal_ujian` (
+  `id_jadwal_ujian` int(12) NOT NULL,
+  `kode_matkul_ujian` varchar(12) NOT NULL,
+  `nip_ujian` varchar(255) NOT NULL,
+  `kode_ruangan_ujian` varchar(255) NOT NULL,
+  `tanggal_ujian` date NOT NULL,
+  `jam_ujian` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jadwal_ujian`
+--
+
+INSERT INTO `jadwal_ujian` (`id_jadwal_ujian`, `kode_matkul_ujian`, `nip_ujian`, `kode_ruangan_ujian`, `tanggal_ujian`, `jam_ujian`) VALUES
+(17, 'MK002', '12345677', 'R001', '2019-01-28', '10.00 - 12.00'),
+(18, 'MK005', '275875664', 'R002', '2019-01-29', '10.00-11.00'),
+(19, 'MK006', '275875665', 'R003', '2019-01-30', '10.00-12.00');
 
 -- --------------------------------------------------------
 
@@ -143,16 +166,6 @@ CREATE TABLE `krs` (
   `nim_krs` varchar(100) NOT NULL,
   `nama_krs` char(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `krs`
---
-
-INSERT INTO `krs` (`id`, `kode_matkul_krs`, `nim_krs`, `nama_krs`) VALUES
-(58, 'MK001', '1770231019', 'M Syamsul Arif'),
-(60, 'MK004', '1770231019', 'M Syamsul Arif'),
-(61, 'MK005', '1770231019', 'M Syamsul Arif'),
-(62, 'MK002', '1770231019', 'M Syamsul Arif');
 
 -- --------------------------------------------------------
 
@@ -179,6 +192,21 @@ INSERT INTO `mata_kuliah` (`kode_matkul`, `nama_matkul`, `sks`) VALUES
 ('MK006', 'Matematika Diskrit', 4),
 ('MK007', 'Bahasa Indonesia', 2),
 ('MK008', 'Sistem Operasi', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nilai`
+--
+
+CREATE TABLE `nilai` (
+  `id_nilai` int(11) NOT NULL,
+  `nim_nilai` varchar(255) NOT NULL,
+  `kode_matkul_nilai` varchar(255) NOT NULL,
+  `uts` int(12) DEFAULT NULL,
+  `uas` int(12) DEFAULT NULL,
+  `tugas` int(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -225,7 +253,8 @@ INSERT INTO `users` (`id_user`, `nip_user`, `nama_user`, `username`, `password`,
 (28, '1770231019', 'M Syamsul Arif', '1770231019', 'mahasiswa', 4, 'KP-TIF'),
 (29, '12345677', 'Yanto', 'dosen', 'dosen', 3, 'KP-TIF'),
 (30, 'KP-TIF', 'Prodi Informatika', 'prodi_informatika', 'prodi', 2, 'KP-TIF'),
-(31, '275875664', 'Arif', 'syamsul', 'syamsul', 3, 'KP-TP');
+(31, '275875664', 'Arif', 'syamsul', 'syamsul', 3, 'KP-TP'),
+(44, '1770231020', 'Romi', '1770231020', 'mahasiswa', 4, 'KP-TIF');
 
 -- --------------------------------------------------------
 
@@ -281,6 +310,12 @@ ALTER TABLE `jadwal`
   ADD KEY `FK_jadwal_jurusan` (`kode_prodi`);
 
 --
+-- Indexes for table `jadwal_ujian`
+--
+ALTER TABLE `jadwal_ujian`
+  ADD PRIMARY KEY (`id_jadwal_ujian`);
+
+--
 -- Indexes for table `krs`
 --
 ALTER TABLE `krs`
@@ -291,6 +326,12 @@ ALTER TABLE `krs`
 --
 ALTER TABLE `mata_kuliah`
   ADD PRIMARY KEY (`kode_matkul`);
+
+--
+-- Indexes for table `nilai`
+--
+ALTER TABLE `nilai`
+  ADD PRIMARY KEY (`id_nilai`);
 
 --
 -- Indexes for table `ruangan`
@@ -324,17 +365,27 @@ ALTER TABLE `user_group`
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+--
+-- AUTO_INCREMENT for table `jadwal_ujian`
+--
+ALTER TABLE `jadwal_ujian`
+  MODIFY `id_jadwal_ujian` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `krs`
 --
 ALTER TABLE `krs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+--
+-- AUTO_INCREMENT for table `nilai`
+--
+ALTER TABLE `nilai`
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `user_group`
 --

@@ -6,15 +6,14 @@ include("../koneksi.php");
 if(isset($_POST['input'])){
 
     // ambil data dari formulir
-    $kode_matkul_jadwal = $_POST["kode_matkul_jadwal"];
-    $nip_jadwal = $_POST["nip_jadwal"];
-    $kode_ruangan_jadwal = $_POST["kode_ruangan_jadwal"];    
-    $kode_prodi = $_POST["kode_prodi"];
-    $hari = $_POST["hari"];
-    $jam = $_POST["jam"];
+    $nim_nilai = $_POST["nim_nilai"];
+    $kode_matkul_nilai = $_POST["kode_matkul_nilai"];
+    $uts = $_POST["uts"];
+    $uas = $_POST["uas"];
+    $tugas = $_POST["tugas"];
 
     // buat query
-    $query = "INSERT INTO jadwal VALUE ('','$kode_matkul_jadwal', '$nip_jadwal', '$kode_ruangan_jadwal', '$kode_prodi', '$hari', '$jam')";
+    $query = "INSERT INTO nilai VALUE ('', '$nim_nilai', '$kode_matkul_nilai', '$uts', '$uas', '$tugas')";
     $row = mysqli_query($conn, $query);
 
     // apakah query simpan berhasil?

@@ -5,9 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
-	else if($_SESSION['level'] == "1"){
-	
-	
+	else if ($_SESSION['level'] == "4") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,81 +72,80 @@ label {
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Table User Group</h4>
-              <h5 class="card-description">
-                <a href="input.php">Tambah data</a>
-              </h5>
+              <h4 class="card-title">Table Data Mahasiswa</h4>
 				  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
           <div class="row">
 
           <?php
-					if($_SESSION['level'] == "1"){
-          $sql = 'SELECT * FROM user_group';
-					}
-					else{
-						header('location:../error-404.php');
-					}
-				  $query = mysqli_query($conn, $sql);
-
+					$sql = "SELECT id_jadwal, kode_matkul_jadwal, nip_jadwal, kode_ruangan_jadwal, kode_prodi, hari, jam, kode_matkul_krs, id, sks,
+															kode_matkul, nama_matkul,nip, nama, kode_ruangan, nama_ruangan, kode, nama_prodi, nama_krs, uts, uas, tugas, id_nilai, nim_krs FROM jadwal
+															INNER JOIN mata_kuliah ON kode_matkul_jadwal=kode_matkul
+															INNER JOIN krs ON kode_matkul_jadwal=kode_matkul_krs
+															INNER JOIN data_dosen ON nip_jadwal=nip
+															INNER JOIN ruangan ON kode_ruangan_jadwal=kode_ruangan
+															INNER JOIN data_prodi ON kode_prodi=kode
+															INNER JOIN users ON nip_jadwal=nip_user
+															INNER JOIN nilai ON kode_matkul_nilai=kode_matkul_jadwal
+															WHERE nim_nilai='$_SESSION[nip_user]'";
+					$query = mysqli_query($conn, $sql);
           if (!$query) {
             die('SQL Error: ' . mysqli_error($conn));
           }
-
           echo '<table id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
             <thead>
-						<tr>
-                <th>Kode User</th>
-                <th>Nama User Group</th>
-                <th>Action</th>
+            <tr>
+                <th rowspan="2" class="text-center">NO</th>
+								<th rowspan="2" class="text-center">Kode Matkul</th>
+								<th rowspan="2" class="text-center">Nama Mahasiswa</th>
+								<th rowspan="2" class="text-center">Nama Matkul</th>
+								<th rowspan="2" class="text-center">SKS</th>
+								<th rowspan="2" class="text-center">Nama Dosen</th>
+								<th colspan="3" class="text-center">Nilai</th>
             </tr>
+						<tr>
+							<th>UTS</th>
+							<th>UAS</th>
+							<th>TUGAS</th>
+						</tr>
             </thead>
                 <tbody>';
-            
-                      while ($row = mysqli_fetch_array($query)) {
-                        echo "<tr>";
-                        echo "<td>".$row['kode_user']."</td>";
-                        echo "<td>".$row['nama_usergroup']."</td>";
-                        echo "<td align='center'><a href='form-edit.php?kode_user=$row[kode_user]'>Edit</a> | <a href='delete.php?kode_user=$row[kode_user]'>Delete</a></td></tr>";     
-                      }
-                      echo '
+									 $no=1;
+											 while ($row = mysqli_fetch_array($query)) {
+													echo "<tr>";
+													echo "<td>".$no."</td>";
+													echo "<td>".$row['kode_matkul_krs']."</td>";
+													echo "<td>".$row['nama_krs']."</td>";
+													echo "<td>".$row['nama_matkul']."</td>";
+													echo "<td>".$row['sks']."</td>";
+													echo "<td>".$row['nama']."</td>";
+													echo "<td>".$row['uts']."</td>";
+													echo "<td>".$row['uas']."</td>";
+													echo "<td>".$row['tugas']."</td>";
+												$no++;
+												}
+              echo '
               </tbody>
               <tfoot>
                 <tr>
-									<th>Kode User</th>
-									<th>Nama User Group</th>
-									<th>Action</th>
+									<th class="text-center">NO</th>
+									<th class="text-center">Kode Matkul</th>
+									<th class="text-center">Nama Mahasiswa</th>
+									<th class="text-center">Nama Matkul</th>
+									<th class="text-center">SKS</th>
+									<th class="text-center">Nama Dosen</th>
+									<th colspan="3" class="text-center">Nilai</th>
                 </tr>
             </tfoot>
             </table>';
-            
-            // Apakah kita perlu menjalankan fungsi mysqli_free_result() ini? baca bagian VII
-                      mysqli_free_result($query);
-            
-            // Apakah kita perlu menjalankan fungsi mysqli_close() ini? baca bagian VII
-                      mysqli_close($conn);
-                      ?>
+			
+									?>
                   </div>
                   </div>
                 </div>
               </div>
             </div>
-        <!-- Data Table -->
-        </div>
-			
-			<!-- Widget End -->
-          <div class="row">
-            
-          </div>
-          <div class="row">
-			  <!--Visitor Begin-->
-			  <!--Visitor End-->
-          </div>
-          <div class="row">
-            <!-- Row -->
-          </div>
-          <div class="row">
-            
-          </div>
+      		<!-- Data Table -->
+       	  </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -176,7 +173,7 @@ label {
   <!-- End custom js for this page-->
 </body>
 <?php
-}
+	}
 	else{
 		header("location:../error-404.php");
 	}

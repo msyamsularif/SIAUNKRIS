@@ -5,7 +5,7 @@
 	if($_SESSION['level'] == ""){
 		header("location:../index.php?pesan=belum_login");
 	}
-	else if ($_SESSION['level'] == "1" || $_SESSION['level'] == "4") {
+	else if ($_SESSION['level'] == "1") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
