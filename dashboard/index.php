@@ -51,7 +51,10 @@
                       <p class="mb-0 text-right">Total Mahasiswa</p>
                       <div class="fluid-container">
 												<?php
-												$sql = 'SELECT * FROM data_mahasiswa';
+                        $sql = 'SELECT * FROM data_mahasiswa';
+                        
+                        // menghitung nilai rata-rata
+                        // $sql = 'SELECT AVG(no_telp) FROM data_mahasiswa';
 
 												$query = mysqli_query($conn, $sql);
 							
@@ -59,7 +62,16 @@
 													die('SQL Error: ' . mysqli_error($conn));
 												}
 												?>
-                        <h3 class="font-weight-medium text-right mb-0"><?php echo mysqli_num_rows($query) ?></h3>
+                        <h3 class="font-weight-medium text-right mb-0">
+                        <?php
+                        // Untuk menampilkan hasil nilai rata-rata 
+                        // while ($row = mysqli_fetch_array($query)){    
+                        //   echo $row['AVG(no_telp)'];
+                        // } 
+
+                        echo mysqli_num_rows($query)
+                        ?>
+                        </h3>
                       </div>
                     </div>
                   </div>
